@@ -26,22 +26,16 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="flex flex-col gap-12 bg-color-footer px-20 py-8">
-            <div className="flex items-center justify-between">
-                <div className="flex flex-col">
-                    <Image
-                        src={'/Logo.svg'}
-                        alt="..."
-                        width={500}
-                        height={500}
-                        className="w-[400px]"
-                    />
-                    <h1 className={`text-3xl ${oswald.className}`}>
-                        Enter a world of endless entertainment where the magic
-                        of movies is just a click away
-                    </h1>
-                </div>
-                <div className="flex justify-end gap-24">
+        <footer className="flex flex-col gap-12 bg-color-footer p-6 py-8 md:px-20">
+            <div className="flex flex-col items-center justify-between gap-8 xl:flex-row">
+                <Image
+                    src={'/Logo.svg'}
+                    alt="..."
+                    width={500}
+                    height={500}
+                    className="w-48 sm:w-60 md:w-80 xl:w-[500px]"
+                />
+                <div className="flex w-full flex-wrap justify-center gap-12 sm:flex-nowrap sm:gap-20 xl:w-fit xl:justify-end">
                     {footerData.map((data, index) => (
                         <div key={index} className="flex flex-col gap-4">
                             <h1 className="cursor-default text-lg">
@@ -61,8 +55,8 @@ const Footer = () => {
                     ))}
                 </div>
             </div>
-            <div className="flex items-center justify-between border-t border-color-white/25 pt-6">
-                <p className="text-color-white/75">
+            <div className="flex flex-col-reverse items-center justify-between gap-4 border-t border-color-white/25 pt-6 sm:flex-row">
+                <p className="text-center text-color-white/75">
                     © 2024 Jovan Hermawan. All rights reserved.
                 </p>
                 <div className="flex items-center gap-8 text-xl">

@@ -7,7 +7,7 @@ const MovieGridList = ({ results }) => {
     return (
         <>
             {results?.length != 0 ? (
-                <div className="mt-8 grid w-full grid-cols-5 gap-8">
+                <div className="mt-6 grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {results?.map((value) => (
                         <div key={value.id} className="cursor-pointer">
                             <Link href={`/detail/${value.id}`}>
@@ -20,11 +20,11 @@ const MovieGridList = ({ results }) => {
                                         className="w-fit"
                                     />
                                 ) : (
-                                    <div className="flex h-[512px] items-center justify-center bg-color-secondary">
+                                    <div className="flex h-[91.5%] items-center justify-center bg-color-secondary">
                                         <MdImageNotSupported className="size-20" />
                                     </div>
                                 )}
-                                <h1 className="mt-3 text-lg">
+                                <h1 className="mt-3 sm:text-lg">
                                     {value.title.length > 38
                                         ? `${value.title.slice(0, 38)}...`
                                         : value.title}

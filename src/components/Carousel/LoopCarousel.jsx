@@ -20,23 +20,21 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
     }, [fetchData])
 
     return (
-        <Swiper
-            loop={true}
-            spaceBetween={35}
-            slidesPerView={6}
-            grabCursor={true}
-        >
-            {data.map((value, index) => (
-                <SwiperSlide key={value.id} className="min-w-72 cursor-pointer">
+        <Swiper spaceBetween={30} slidesPerView={6} grabCursor={true}>
+            {data.map((value) => (
+                <SwiperSlide
+                    key={value.id}
+                    className="min-w-40 cursor-pointer md:min-w-52 lg:min-w-64 xl:min-w-72"
+                >
                     <Link href={`/detail/${value.id}`}>
                         <Image
                             src={`${baseImgUrl}${value.poster_path}`}
                             alt="..."
                             width={1000}
                             height={1000}
-                            className="w-fit rounded-xl"
+                            className="rounded-xl xl:w-fit"
                         />
-                        <h1 className="mt-3 text-lg">
+                        <h1 className="mt-3 lg:text-lg">
                             {value.title.length > 30
                                 ? `${value.title.slice(0, 30)}...`
                                 : value.title}

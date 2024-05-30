@@ -25,10 +25,10 @@ const Page = ({ params: { keyword } }) => {
     const decodedKeyword = decodeURI(keyword)
 
     return (
-        <div className="bg-color-primary p-8">
+        <div className="bg-color-primary p-6">
             <SearchBar />
 
-            <p className="mt-8 text-lg font-semibold uppercase">
+            <p className="mt-6 text-lg font-semibold uppercase">
                 Searching for{' '}
                 <span className="italic">&apos;{decodedKeyword}&apos;</span>
             </p>

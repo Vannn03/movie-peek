@@ -11,7 +11,9 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
 
     return (
         <div className="h-fit rounded-3xl bg-color-secondary p-8">
-            <h1 className={`${oswald.className} mb-8 text-3xl font-medium`}>
+            <h1
+                className={`${oswald.className} mb-8 text-2xl font-medium md:text-3xl`}
+            >
                 {title}
             </h1>
             {credit.length !== 0 ? (
@@ -32,8 +34,8 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                                 </div>
                             )}
                             <div>
-                                <h1 className="text-lg">{data.name}</h1>
-                                <p className="text-color-white/75">
+                                <h1 className="md:text-lg">{data.name}</h1>
+                                <p className="textsm text-color-white/75 md:text-base">
                                     {title == 'Casts'
                                         ? data.character
                                         : data.job}

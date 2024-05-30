@@ -25,9 +25,9 @@ const Page = ({ params: { id, type } }) => {
     const decodedType = decodeURI(type)
 
     return (
-        <div className="bg-color-primary p-8">
+        <div className="bg-color-primary p-6">
             <h1
-                className={`uppercase ${oswald.className} mb-4 text-3xl font-semibold`}
+                className={`uppercase ${oswald.className} mb-4 text-2xl font-semibold sm:text-3xl`}
             >
                 genre: {decodedType}
             </h1>

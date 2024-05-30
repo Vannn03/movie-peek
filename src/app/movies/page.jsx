@@ -15,8 +15,10 @@ const page = () => {
                 />
             </section>
             {/* Recommended */}
-            <section className="px-20 py-12">
-                <h1 className={`${oswald.className} mb-8 text-4xl font-medium`}>
+            <section className="px-6 py-12 sm:px-12 md:px-20">
+                <h1
+                    className={`${oswald.className} mb-8 text-3xl font-medium lg:text-4xl`}
+                >
                     Recommended Movies
                 </h1>
                 <LoopCarousel
@@ -25,8 +27,10 @@ const page = () => {
                 />
             </section>
             {/* Top Rated */}
-            <section className="px-20 py-12">
-                <h1 className={`${oswald.className} mb-8 text-4xl font-medium`}>
+            <section className="px-6 py-12 sm:px-12 md:px-20">
+                <h1
+                    className={`${oswald.className} mb-8 text-3xl font-medium lg:text-4xl`}
+                >
                     Best Movies of All Time
                 </h1>
                 <LoopCarousel

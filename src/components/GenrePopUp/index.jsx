@@ -16,7 +16,7 @@ const GenrePopUp = ({ genreHover, pathname }) => {
 
     return (
         <span
-            className={`absolute right-0 z-40 grid w-[500px] translate-x-[410px] grid-cols-3 bg-color-footer transition-all duration-300 ${genreHover ? 'visibility-visible pointer-events-auto top-20 opacity-100' : 'visibility-hidden pointer-events-none top-16 opacity-0'}`}
+            className={`absolute right-0 z-40 grid w-[500px] translate-x-[200px] grid-cols-3 bg-color-footer transition-all duration-300 ${genreHover ? 'visibility-visible pointer-events-auto top-20 opacity-100' : 'visibility-hidden pointer-events-none top-16 opacity-0'}`}
         >
             {data.map((value) => (
                 <Link

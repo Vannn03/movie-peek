@@ -39,34 +39,34 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
     }
 
     return (
-        <div className="mt-8 flex items-center justify-center">
+        <div className="mt-6 flex items-center justify-center px-6">
             <div
                 onClick={handleFirstPage}
-                className="cursor-pointer rounded-full p-4 hover:bg-color-secondary"
+                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
             >
                 <HiOutlineChevronDoubleLeft />
             </div>
             <div
                 onClick={handlePrevPage}
-                className="cursor-pointer rounded-full p-4 hover:bg-color-secondary"
+                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
             >
                 <FaChevronLeft />
             </div>
             <div className="mx-4 flex items-center gap-2">
-                <p className="cursor-default bg-color-light-accent px-4 py-2 text-lg">
+                <p className="cursor-default bg-color-light-accent px-3 py-2 sm:px-4  sm:text-lg">
                     {currentPage}
                 </p>
                 {currentPage !== lastPage && (
                     <>
                         <p
-                            className="cursor-pointer px-4 py-2 text-lg hover:bg-color-secondary"
+                            className="cursor-pointer px-3 py-2 hover:bg-color-secondary sm:px-4 sm:text-lg"
                             onClick={handleNextPage}
                         >
                             {currentPage + 1}
                         </p>
                         {currentPage !== lastPage - 1 && (
                             <p
-                                className="cursor-pointer px-4 py-2 text-lg hover:bg-color-secondary"
+                                className="cursor-pointer px-3 py-2 hover:bg-color-secondary sm:px-4 sm:text-lg"
                                 onClick={handleSecondNextPage}
                             >
                                 {currentPage + 2}
@@ -76,7 +76,7 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
                 )}
                 <p className="cursor-default">...</p>
                 <p
-                    className="cursor-pointer px-4 py-2 text-lg hover:bg-color-secondary"
+                    className="cursor-pointer px-3 py-2 hover:bg-color-secondary sm:px-4 sm:text-lg"
                     onClick={handleLastPage}
                 >
                     {lastPage}
@@ -84,7 +84,7 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
             </div>
             <div
                 onClick={handleNextPage}
-                className="cursor-pointer rounded-full p-4 hover:bg-color-secondary"
+                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
             >
                 <FaChevronRight />
             </div>

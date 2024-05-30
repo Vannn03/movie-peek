@@ -78,6 +78,22 @@ const Home = async () => {
         },
     ]
 
+    const subTitle = (title) => (
+        <h1
+            className={`${oswald.className} z-40 text-center text-4xl font-semibold md:text-5xl xl:text-6xl`}
+        >
+            {title}
+        </h1>
+    )
+
+    const button = (name, customCSS) => (
+        <button
+            className={`${customCSS} rounded px-12 py-4 font-medium uppercase tracking-wide md:text-lg xl:text-xl`}
+        >
+            {name}
+        </button>
+    )
+
     return (
         <main className="bg-color-primary">
             <Image
@@ -85,13 +101,13 @@ const Home = async () => {
                 alt="..."
                 width={200}
                 height={200}
-                className="absolute right-0 top-0 w-full"
+                className="absolute right-0 top-0 flex h-full w-full md:h-fit"
             />
             {/* HERO */}
-            <section className="flex h-dvh items-center justify-center">
+            <section className="flex h-dvh items-center justify-center px-6 md:px-12 xl:px-20">
                 <div className="z-40 text-center">
                     <h1
-                        className={`${oswald.className} text-8xl font-bold uppercase`}
+                        className={`${oswald.className} text-3xl font-bold uppercase sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl`}
                     >
                         satisfy your{' '}
                         <span className="text-color-light-accent">
@@ -99,29 +115,30 @@ const Home = async () => {
                         </span>
                     </h1>
                     <p
-                        className={`${oswald.className} mx-auto mt-8 w-[800px] text-3xl text-color-white/75 `}
+                        className={`${oswald.className} mx-auto mt-4 text-lg text-color-white/75 sm:mt-8 sm:text-2xl xl:text-3xl `}
                     >
                         Step into a realm of boundless entertainment where the
                         magic of cinema awaits at your fingertips
                     </p>
 
-                    <div className="mx-auto mt-20 flex w-[900px] gap-4">
-                        <button className="w-1/4 cursor-not-allowed rounded bg-color-light-accent px-12 py-4 text-xl font-medium uppercase tracking-wide opacity-50">
-                            Sign up
-                        </button>
-                        <SearchBar />
+                    <div className="mx-auto mt-12 flex justify-center gap-4 sm:mt-20">
+                        {button(
+                            'Sign up',
+                            'cursor-not-allowed opacity-50 bg-color-light-accent sm:flex hidden'
+                        )}
+                        <SearchBar
+                            customWidth={
+                                'w-full sm:w-[400px] lg:w-[600px] xl:w-[750px]'
+                            }
+                        />
                     </div>
                 </div>
             </section>
 
             {/* MOVIE TRENDS */}
-            <section className="p-20">
+            <section className="px-6 py-20 md:px-12 xl:p-20">
                 <div className="flex flex-col items-center">
-                    <h1
-                        className={`${oswald.className} z-40 text-center text-6xl font-semibold`}
-                    >
-                        Discover the Latest Movie Trends
-                    </h1>
+                    {subTitle('Discover the Latest Movie Trends')}
 
                     <div className="group relative">
                         <Image
@@ -134,37 +151,36 @@ const Home = async () => {
 
                         <Link
                             href={'movies'}
-                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded bg-color-accent px-12 py-4 text-xl font-medium uppercase tracking-wide opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                         >
-                            Discover now
+                            {button('Discover now', 'bg-color-accent')}
                         </Link>
                     </div>
                 </div>
             </section>
 
             {/* GENRES*/}
-            <section className="p-20">
+            <section className="px-6 py-20 md:px-12 xl:p-20">
                 <div className="flex flex-col items-center">
-                    <h1
-                        className={`${oswald.className} z-40 text-center text-6xl font-semibold`}
-                    >
-                        Choose Your Favorite Genres
-                    </h1>
+                    {subTitle('Choose Your Favorite Genres')}
 
-                    <div className="z-40 mt-20 grid grid-cols-5 gap-8">
+                    <div className="z-40 mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 xl:mt-20 xl:grid-cols-4 xl:gap-8 2xl:grid-cols-5">
                         {genres.map((data, index) => (
                             <div
                                 key={data.id}
-                                className="flex items-center justify-between gap-4 rounded-xl bg-color-secondary px-4 py-4"
+                                className="flex flex-col justify-between gap-4 rounded-xl bg-color-secondary p-4 lg:flex-row lg:items-center"
                             >
-                                <div className="flex items-center gap-4">
-                                    <div className="rounded-lg bg-color-primary p-4 text-2xl text-color-light-accent">
+                                <div className="flex flex-col items-center gap-4 sm:flex-row">
+                                    <div className="rounded-lg bg-color-primary p-4 text-xl text-color-light-accent lg:text-2xl">
                                         {genreIconData[index]}
                                     </div>
-                                    <p className="text-lg">{data.name}</p>
+                                    <p className="overflow-hidden md:text-lg">
+                                        {data.name}
+                                    </p>
                                 </div>
                                 <Link
                                     href={`/genres/${data.id}/${data.name.toLowerCase()}`}
+                                    className="flex justify-end"
                                 >
                                     <FaArrowRight className="text-xl" />
                                 </Link>
@@ -175,27 +191,26 @@ const Home = async () => {
             </section>
 
             {/* FEATURES */}
-            <section className="p-20 pb-40">
+            <section className="px-6 pb-40 pt-20 md:px-12 xl:p-20">
                 <div className="flex flex-col items-center">
-                    <h1
-                        className={`${oswald.className} z-40 text-center text-6xl font-semibold`}
-                    >
-                        Best Features For You
-                    </h1>
+                    {subTitle('Best Features For You')}
 
-                    <div className="z-40 mt-20 grid grid-cols-3 gap-20">
+                    <div className="z-40 mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3 xl:mt-20 xl:gap-20">
                         {featureData.map((data, index) => (
-                            <div key={index} className="flex gap-6">
+                            <div
+                                key={index}
+                                className="flex flex-col items-center gap-6 lg:flex-row lg:items-start"
+                            >
                                 <div className="text-4xl text-color-accent">
                                     {data.url_icon}
                                 </div>
-                                <div className="flex flex-col gap-4">
+                                <div className="flex flex-col items-center gap-4 text-center lg:items-start lg:text-start">
                                     <h1
-                                        className={`text-3xl font-medium ${oswald.className}`}
+                                        className={`text-2xl font-medium md:text-3xl ${oswald.className}`}
                                     >
                                         {data.name}
                                     </h1>
-                                    <p className="text-xl text-color-white/75">
+                                    <p className="text-lg text-color-white/75 md:text-xl">
                                         {data.description}
                                     </p>
                                 </div>

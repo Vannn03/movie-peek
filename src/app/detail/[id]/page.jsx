@@ -5,6 +5,7 @@ import { getMovieResponse } from '@/libs/api-libs'
 import Image from 'next/image'
 import { FaBookmark } from 'react-icons/fa6'
 import { MdImageNotSupported } from 'react-icons/md'
+import Responsive from './Responsive'
 
 const Page = async ({ params: { id } }) => {
     const detail = await getMovieResponse(
@@ -52,46 +53,55 @@ const Page = async ({ params: { id } }) => {
                     alt="..."
                     width={2000}
                     height={2000}
-                    className="h-[50dvh] w-full object-cover"
+                    className="hidden h-[50dvh] w-full object-cover xl:flex"
                 />
             ) : (
-                <div className="flex h-[50dvh] items-center justify-center bg-color-secondary">
+                <div className="hidden h-[50dvh] items-center justify-center bg-color-secondary xl:flex">
                     <MdImageNotSupported className="size-20" />
                 </div>
             )}
-            <div className="absolute top-0 h-[50dvh] w-full bg-color-primary/50" />
+            <div className="absolute top-0 hidden h-[50dvh] w-full bg-color-primary/50 xl:flex" />
 
             {/* DETAIL */}
-            <div className="flex h-fit justify-between gap-12 px-20 py-10">
+            <div className="flexc flex h-fit justify-between gap-8 p-6 sm:px-12 sm:py-10 lg:gap-12 lg:px-20 xl:flex-row">
                 {/* POSTER IMAGE */}
-                <div className="w-1/4 -translate-y-96">
-                    <div className="sticky top-[535px] flex flex-col gap-4">
+                <div className="md:w-2/5 xl:w-1/4 xl:-translate-y-96">
+                    <div className="flex flex-col gap-4 xl:sticky xl:top-[535px]">
                         {detail.poster_path !== null ? (
                             <Image
                                 src={`${baseImgUrl}${detail.poster_path}`}
                                 alt="..."
                                 width={500}
                                 height={500}
-                                className="w-full"
+                                className="mx-auto w-80 md:w-full"
                             />
                         ) : (
-                            <div className="flex h-[512px] items-center justify-center bg-color-secondary">
+                            <div className="flex h-[512px] w-full items-center justify-center bg-color-secondary">
                                 <MdImageNotSupported className="size-20" />
                             </div>
                         )}
-                        <button className="flex w-full items-center justify-center gap-2 rounded border-2 border-color-light-accent bg-color-primary px-12 py-4 text-lg font-medium uppercase tracking-wide text-color-light-accent">
+                        <button className="flex w-full cursor-not-allowed items-center justify-center gap-2 rounded border-2 border-color-light-accent bg-color-primary px-12 py-4 font-medium uppercase tracking-wide text-color-light-accent opacity-50 md:text-lg">
                             <FaBookmark /> Add to Collection
                         </button>
                     </div>
+                    {/* RESPONSIVE VERSION */}
+                    <Responsive
+                        detail={detail}
+                        handleNullContent={handleNullContent}
+                        detailData={detailData}
+                        baseImgUrl={baseImgUrl}
+                        cast={cast}
+                        crew={crew}
+                    />
                 </div>
                 {/* LEFT DETAIL */}
-                <div className="flex w-2/4 flex-col gap-8">
+                <div className="hidden w-3/5 flex-col gap-8 md:flex xl:w-2/4">
                     <h1
-                        className={`${oswald.className} text-5xl font-semibold`}
+                        className={`${oswald.className} text-4xl font-semibold md:text-5xl`}
                     >
                         {detail.title}
                     </h1>
-                    <div className="flex items-center gap-8 text-lg text-color-white/50">
+                    <div className="flex items-center gap-8 text-color-white/50 md:text-lg">
                         <p className="font-semibold uppercase text-color-accent">
                             {detail.original_language}
                         </p>
@@ -99,7 +109,7 @@ const Page = async ({ params: { id } }) => {
                             {handleNullContent(detail.tagline)}
                         </p>
                     </div>
-                    <p className="text-xl text-color-white/75">
+                    <p className="text-lg text-color-white/75 md:text-xl">
                         {detail.overview}
                     </p>
 
@@ -110,14 +120,19 @@ const Page = async ({ params: { id } }) => {
 
                     <div>
                         <h1
-                            className={`${oswald.className} mb-8 text-3xl font-medium`}
+                            className={`${oswald.className} mb-8 text-2xl font-medium md:text-3xl`}
                         >
                             Comment
                         </h1>
+                        <textarea
+                            type="text"
+                            placeholder="Comment here..."
+                            className="w-full cursor-not-allowed rounded bg-color-white px-6 py-4 text-color-primary opacity-50 outline-none md:text-lg xl:text-xl"
+                        />
                     </div>
                 </div>
                 {/* RIGHT DETAIL */}
-                <div className="flex w-1/4 flex-col gap-8">
+                <div className="hidden w-1/4 flex-col gap-8 xl:flex">
                     <div className="flex h-fit flex-col gap-4 rounded-3xl bg-color-secondary p-8">
                         {detailData.map((data, index) => (
                             <div
