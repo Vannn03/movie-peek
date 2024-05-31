@@ -3,7 +3,11 @@
 import { oswald } from '@/app/fonts'
 import { getMovieResponse } from '@/libs/api-libs'
 import { useCallback, useEffect, useState } from 'react'
-import { FaCircleChevronLeft, FaCircleChevronRight } from 'react-icons/fa6'
+import {
+    FaChevronRight,
+    FaCircleChevronLeft,
+    FaCircleChevronRight,
+} from 'react-icons/fa6'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/autoplay'
@@ -47,32 +51,33 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
 
                     <div className="absolute top-0 h-[75dvh] w-full bg-gradient-to-b from-color-primary/50 via-color-primary/50 to-color-primary" />
 
-                    <div className="absolute left-6 top-6 border-l-4 border-color-accent px-4 py-2 md:left-8 md:top-8">
-                        <p className="text-lg font-medium uppercase tracking-wide md:text-xl">
+                    <div className="absolute left-6 top-6 border-l-4 border-color-accent px-4 py-2 md:left-12 md:top-12">
+                        <p className="font-medium uppercase tracking-wide sm:text-lg md:text-xl">
                             trending #{index + 1}
                         </p>
                     </div>
 
                     <div className="absolute top-1/2 mx-6 flex -translate-y-1/2 flex-col gap-6 sm:mx-12 sm:gap-8 md:mx-20 xl:w-[1000px]">
                         <h1
-                            className={`${oswald.className} text-3xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl`}
+                            className={`${oswald.className} text-2xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl`}
                         >
                             {value.title}
                         </h1>
-                        <p className="text-lg text-color-white/75 md:text-xl">
-                            {value.overview.length > 150
-                                ? `${value.overview.slice(0, 150)}...`
+                        <p className="text-color-white/75 sm:text-lg md:text-xl">
+                            {value.overview.length > 125
+                                ? `${value.overview.slice(0, 125)}...`
                                 : value.overview}
                         </p>
                         <Link href={`/detail/${value.id}`}>
-                            <button className="w-fit rounded bg-color-accent px-12 py-4 font-medium uppercase tracking-wide md:text-lg lg:text-xl">
-                                See detail
+                            <button className="flex w-fit items-center gap-2 rounded-sm bg-color-light-accent px-6 py-3 text-sm font-medium sm:text-base md:text-lg lg:text-xl">
+                                See detail{' '}
+                                <FaChevronRight className="text-base" />
                             </button>
                         </Link>
                     </div>
                 </SwiperSlide>
             ))}
-            <div className="absolute bottom-8 right-8 z-50 flex gap-4 text-4xl transition-colors md:text-5xl">
+            <div className="absolute bottom-6 right-6 z-50 flex gap-4 text-4xl transition-colors sm:bottom-12 sm:right-12 md:text-5xl">
                 <button className="btn-prev transition-colors hover:text-color-light-accent">
                     <FaCircleChevronLeft />
                 </button>

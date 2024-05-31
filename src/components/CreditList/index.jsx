@@ -7,19 +7,22 @@ import { MdImageNotSupported } from 'react-icons/md'
 
 const CreditList = ({ baseImgUrl, credit, title }) => {
     const [loadCredit, setLoadCredit] = useState(false)
-    const limitedCredit = !loadCredit ? credit.slice(0, 4) : credit
+    const limitedCredit = !loadCredit ? credit.slice(0, 12) : credit
 
     return (
-        <div className="h-fit rounded-3xl bg-color-secondary p-8">
+        <div className="h-fit rounded bg-color-secondary p-6 sm:p-8">
             <h1
                 className={`${oswald.className} mb-8 text-2xl font-medium md:text-3xl`}
             >
                 {title}
             </h1>
             {credit.length !== 0 ? (
-                <div className="flex flex-col gap-4">
+                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-1">
                     {limitedCredit.map((data) => (
-                        <div key={data.id} className="flex items-center gap-4">
+                        <div
+                            key={data.id}
+                            className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4"
+                        >
                             {data.profile_path !== null ? (
                                 <Image
                                     src={`${baseImgUrl}${data.profile_path}`}
@@ -33,9 +36,9 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                                     <MdImageNotSupported className="size-6" />
                                 </div>
                             )}
-                            <div>
+                            <div className="text-center sm:text-start">
                                 <h1 className="md:text-lg">{data.name}</h1>
-                                <p className="textsm text-color-white/75 md:text-base">
+                                <p className="text-sm text-color-white/75 md:text-base">
                                     {title == 'Casts'
                                         ? data.character
                                         : data.job}
@@ -43,18 +46,16 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                             </div>
                         </div>
                     ))}
-                    {credit.length > 4 && (
-                        <div className="mt-4 flex justify-center text-lg text-color-light-accent underline">
-                            <button
-                                onClick={() => setLoadCredit((prev) => !prev)}
-                            >
-                                {!loadCredit ? 'See more' : 'See Less'}
-                            </button>
-                        </div>
-                    )}
                 </div>
             ) : (
                 <p className="italic text-color-white/75">{title} not found</p>
+            )}
+            {credit.length > 4 && (
+                <div className="mt-8 flex justify-center text-lg text-color-light-accent underline">
+                    <button onClick={() => setLoadCredit((prev) => !prev)}>
+                        {!loadCredit ? 'See more' : 'See Less'}
+                    </button>
+                </div>
             )}
         </div>
     )

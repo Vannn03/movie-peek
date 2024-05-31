@@ -2,7 +2,6 @@
 
 import MovieGridList from '@/components/MovieGridList'
 import Pagination from '@/components/Pagination'
-import SearchBar from '@/components/SearchBar'
 import { getMovieResponse } from '@/libs/api-libs'
 import { useCallback, useEffect, useState } from 'react'
 
@@ -26,10 +25,8 @@ const Page = ({ params: { keyword } }) => {
 
     return (
         <div className="bg-color-primary p-6">
-            <SearchBar />
-
-            <p className="mt-6 text-lg font-semibold uppercase">
-                Searching for{' '}
+            <p className="text-lg font-medium text-color-white/75">
+                Search results for:{' '}
                 <span className="italic">&apos;{decodedKeyword}&apos;</span>
             </p>
 

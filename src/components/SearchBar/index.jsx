@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { useRef } from 'react'
 import { IoSearch } from 'react-icons/io5'
 
-const SearchBar = ({ customWidth }) => {
+const SearchBar = () => {
     const searchRef = useRef()
     const router = useRouter()
 
@@ -23,16 +23,16 @@ const SearchBar = ({ customWidth }) => {
 
     return (
         <div
-            className={`flex ${customWidth} items-center justify-between gap-4 rounded bg-color-white px-4 py-3 lg:px-8 lg:py-4`}
+            className={`flex items-center justify-between gap-4 rounded-sm bg-color-white px-4 py-3`}
         >
             <input
                 type="text"
                 placeholder="Search movie..."
-                className="w-full bg-color-white text-color-primary outline-none md:text-lg xl:text-xl"
+                className="w-80 bg-color-white text-sm text-color-primary outline-none sm:text-base "
                 ref={searchRef}
                 onKeyDown={handleSearch}
             />
-            <IoSearch className="text-2xl text-color-primary/35 md:text-3xl" />
+            <IoSearch className="text-xl text-color-primary/35 sm:text-2xl" />
         </div>
     )
 }
