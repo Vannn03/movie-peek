@@ -17,7 +17,7 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                 {title}
             </h1>
             {credit.length !== 0 ? (
-                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-1">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-2">
                     {limitedCredit.map((data) => (
                         <div
                             key={data.id}
@@ -37,8 +37,8 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                                 </div>
                             )}
                             <div className="text-center sm:text-start">
-                                <h1 className="md:text-lg">{data.name}</h1>
-                                <p className="text-sm text-color-white/75 md:text-base">
+                                <h1 className="lg:text-lg">{data.name}</h1>
+                                <p className="text-sm text-color-white/75 lg:text-base">
                                     {title == 'Casts'
                                         ? data.character
                                         : data.job}
@@ -51,7 +51,7 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                 <p className="italic text-color-white/75">{title} not found</p>
             )}
             {credit.length > 4 && (
-                <div className="mt-8 flex justify-center text-lg text-color-light-accent underline">
+                <div className="mt-8 flex justify-center text-color-light-accent underline sm:text-lg">
                     <button onClick={() => setLoadCredit((prev) => !prev)}>
                         {!loadCredit ? 'See more' : 'See Less'}
                     </button>

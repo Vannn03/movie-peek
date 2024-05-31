@@ -12,7 +12,7 @@ const VideoPlayer = ({ detail }) => {
 
     return (
         <>
-            <div className="fixed bottom-6 right-6 z-50 sm:bottom-12 sm:right-12">
+            <div className="fixed bottom-6 right-6 z-40 sm:bottom-12 sm:right-12">
                 <button
                     className={`flex ${toggleTrailer ? 'w-fit' : 'w-full'} gap-2 rounded-sm bg-color-light-accent px-8 py-3 text-sm font-medium shadow-2xl sm:text-base md:text-lg`}
                     onClick={() => setToggleTrailer((prev) => !prev)}

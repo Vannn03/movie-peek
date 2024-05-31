@@ -7,7 +7,7 @@ const MovieGridList = ({ results }) => {
     return (
         <>
             {results?.length != 0 ? (
-                <div className="mt-6 grid w-full grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="mt-6 grid w-full grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {results?.map((value) => (
                         <div key={value.id} className="relative cursor-pointer">
                             <Link href={`/detail/${value.id}`}>
@@ -37,7 +37,7 @@ const MovieGridList = ({ results }) => {
 
                                 <div className="absolute top-0 h-full w-full bg-gradient-to-b from-black/0 via-black/0 to-black" />
 
-                                <h1 className="absolute bottom-0 p-2 sm:p-4 sm:text-lg">
+                                <h1 className="absolute bottom-0 p-2 text-sm sm:p-4 sm:text-base lg:text-lg">
                                     {value.title.length > 25
                                         ? `${value.title.slice(0, 25)}...`
                                         : value.title}

@@ -46,12 +46,12 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                         alt="..."
                         width={1900}
                         height={750}
-                        className="h-[75dvh] w-full object-cover object-top"
+                        className="h-[60dvh] w-full object-cover object-top sm:h-[75dvh]"
                     />
 
-                    <div className="absolute top-0 h-[75dvh] w-full bg-gradient-to-b from-color-primary/50 via-color-primary/50 to-color-primary" />
+                    <div className="absolute top-0 h-[60dvh] w-full bg-gradient-to-b from-color-primary/50 via-color-primary/50 to-color-primary sm:h-[75dvh]" />
 
-                    <div className="absolute left-6 top-6 border-l-4 border-color-accent px-4 py-2 md:left-12 md:top-12">
+                    <div className="absolute left-6 top-6 border-l-4 border-color-accent px-4 py-1 md:left-12 md:top-12 md:py-2">
                         <p className="font-medium uppercase tracking-wide sm:text-lg md:text-xl">
                             trending #{index + 1}
                         </p>

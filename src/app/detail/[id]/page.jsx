@@ -22,6 +22,10 @@ const Page = async ({ params: { id } }) => {
             description: detail.original_title,
         },
         {
+            name: 'Overview',
+            description: detail.overview,
+        },
+        {
             name: 'Genre',
             description: genresString,
         },
@@ -30,12 +34,16 @@ const Page = async ({ params: { id } }) => {
             description: detail.release_date,
         },
         {
-            name: 'Status',
-            description: detail.status,
+            name: 'Duration',
+            description: `${detail.runtime} minutes`,
         },
         {
             name: 'Rating',
             description: `${detail.vote_average.toFixed(1)} (${detail.vote_count} reviewers)`,
+        },
+        {
+            name: 'Status',
+            description: detail.status,
         },
     ]
 
@@ -46,18 +54,24 @@ const Page = async ({ params: { id } }) => {
     return (
         <main className="relative bg-color-primary">
             {/* DETAIL */}
-            <div className="relative h-[93.5dvh] w-full sm:h-[75dvh]">
-                <Image
-                    src={`${baseImgUrl}${detail.backdrop_path}`}
-                    alt="..."
-                    width={1900}
-                    height={750}
-                    className="h-full w-full object-cover"
-                />
+            <div className="relative h-fit w-full sm:h-[75dvh]">
+                {detail.backdrop_path !== null ? (
+                    <Image
+                        src={`${baseImgUrl}${detail.backdrop_path}`}
+                        alt="..."
+                        width={1900}
+                        height={750}
+                        className="hidden h-full w-full object-cover sm:flex"
+                    />
+                ) : (
+                    <div className="hidden h-full w-full items-center justify-center bg-color-secondary sm:flex">
+                        <MdImageNotSupported className="size-40" />
+                    </div>
+                )}
 
-                <div className="absolute top-0 h-full w-full bg-color-primary/75" />
+                <div className="absolute top-0 hidden h-full w-full bg-color-primary/75 sm:flex" />
 
-                <div className="absolute top-0 flex h-full flex-col items-center justify-center gap-8 px-6 sm:px-12 md:px-20 lg:flex-row lg:justify-start lg:gap-12">
+                <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-6 pt-6 sm:absolute sm:top-0 sm:px-12 sm:pt-0 md:px-20 lg:flex-row lg:justify-start lg:gap-12">
                     {/* MAIN DETAIL */}
                     {detail.poster_path !== null ? (
                         <Image
@@ -65,10 +79,10 @@ const Page = async ({ params: { id } }) => {
                             alt="..."
                             width={300}
                             height={500}
-                            className="w-40 rounded-sm lg:w-fit"
+                            className="w-60 rounded-sm sm:w-40 lg:w-fit"
                         />
                     ) : (
-                        <div className="flex items-center justify-center bg-color-secondary">
+                        <div className="flex h-80 w-60 items-center justify-center rounded-sm bg-color-secondary sm:h-60 sm:w-40 lg:h-[500px] lg:w-96">
                             <MdImageNotSupported className="size-20" />
                         </div>
                     )}
@@ -86,7 +100,7 @@ const Page = async ({ params: { id } }) => {
                                 {handleNullContent(detail.tagline)}
                             </p>
                         </div>
-                        <p className="text-center text-sm text-color-white/75 sm:text-base md:text-lg lg:text-start lg:text-xl">
+                        <p className="hidden text-center text-sm text-color-white/75 sm:flex sm:text-base md:text-lg lg:text-start lg:text-xl">
                             {detail.overview}
                         </p>
 
@@ -98,7 +112,7 @@ const Page = async ({ params: { id } }) => {
             </div>
             {/* OTHER DETAIL */}
             <div className="flex flex-col gap-6 p-6 sm:gap-8 sm:p-12">
-                <div className="grid grid-cols-1 gap-8 xl:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex h-fit flex-col gap-4 rounded bg-color-secondary p-6 sm:p-8">
                         {detailData.map((data, index) => (
                             <div
@@ -114,16 +128,18 @@ const Page = async ({ params: { id } }) => {
                             </div>
                         ))}
                     </div>
-                    <CreditList
-                        baseImgUrl={baseImgUrl}
-                        credit={cast}
-                        title={'Casts'}
-                    />
-                    <CreditList
-                        baseImgUrl={baseImgUrl}
-                        credit={crew}
-                        title={'Crews'}
-                    />
+                    <div className="grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-2">
+                        <CreditList
+                            baseImgUrl={baseImgUrl}
+                            credit={cast}
+                            title={'Casts'}
+                        />
+                        <CreditList
+                            baseImgUrl={baseImgUrl}
+                            credit={crew}
+                            title={'Crews'}
+                        />
+                    </div>
                 </div>
 
                 <hr />
