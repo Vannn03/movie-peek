@@ -15,8 +15,8 @@ const MovieGridList = ({ results }) => {
                                     <Image
                                         src={`${baseImgUrl}${value?.poster_path}`}
                                         alt="..."
-                                        width={1000}
-                                        height={1000}
+                                        width={400}
+                                        height={600}
                                         className="w-fit"
                                     />
                                 ) : (

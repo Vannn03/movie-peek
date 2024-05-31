@@ -75,6 +75,7 @@ const Responsive = ({
                     type="text"
                     placeholder="Comment here..."
                     className="w-full cursor-not-allowed rounded bg-color-white px-6 py-4 text-color-primary opacity-50 outline-none md:text-lg xl:text-xl"
+                    disabled
                 />
             </div>
         </>

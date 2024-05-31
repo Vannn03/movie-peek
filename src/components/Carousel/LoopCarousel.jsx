@@ -20,7 +20,12 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
     }, [fetchData])
 
     return (
-        <Swiper spaceBetween={30} slidesPerView={6} grabCursor={true}>
+        <Swiper
+            spaceBetween={30}
+            slidesPerView={6}
+            grabCursor={true}
+            loop={true}
+        >
             {data.map((value) => (
                 <SwiperSlide
                     key={value.id}
@@ -30,9 +35,9 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
                         <Image
                             src={`${baseImgUrl}${value.poster_path}`}
                             alt="..."
-                            width={1000}
-                            height={1000}
-                            className="rounded-xl xl:w-fit"
+                            width={300}
+                            height={500}
+                            className="xl:w-fit"
                         />
                         <h1 className="mt-3 lg:text-lg">
                             {value.title.length > 30

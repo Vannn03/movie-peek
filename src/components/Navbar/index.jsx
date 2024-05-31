@@ -36,7 +36,7 @@ const Navbar = () => {
                         alt="..."
                         width={200}
                         height={200}
-                        className="w-[150px] lg:w-fit"
+                        className="w-24 sm:w-36 lg:w-fit"
                     />
 
                     <nav className="relative hidden gap-20 text-xl lg:flex">
@@ -86,11 +86,11 @@ const Navbar = () => {
 
                     {/* RESPONSIVE */}
                     <RiMenu4Fill
-                        className={`flex cursor-pointer text-4xl lg:hidden ${toggleNav ? 'hidden' : 'flex'}`}
+                        className={`flex cursor-pointer text-3xl sm:text-4xl lg:hidden ${toggleNav ? 'hidden' : 'flex'}`}
                         onClick={() => setToggleNav((prev) => !prev)}
                     />
                     <FaXmark
-                        className={`flex cursor-pointer text-4xl lg:hidden ${toggleNav ? 'flex' : 'hidden'}`}
+                        className={`flex cursor-pointer text-3xl sm:text-4xl lg:hidden ${toggleNav ? 'flex' : 'hidden'}`}
                         onClick={() => setToggleNav((prev) => !prev)}
                     />
                 </div>

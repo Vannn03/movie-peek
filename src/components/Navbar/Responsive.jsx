@@ -24,23 +24,23 @@ const Responsive = ({ pathname, FaChevronDown, toggleNav }) => {
 
     return (
         <nav
-            className={`${toggleNav ? 'flex' : 'hidden'} fixed w-full flex-col bg-color-primary transition-all lg:hidden`}
+            className={`${toggleNav ? 'flex' : 'hidden'} fixed w-full flex-col bg-color-primary lg:hidden`}
         >
             <Link
                 href={'/'}
-                className={`px-6 py-4 hover:bg-color-secondary ${handleActiveNav('/')}`}
+                className={`px-6 py-4 transition-colors hover:bg-color-secondary ${handleActiveNav('/')}`}
             >
                 Home
             </Link>
             <Link
                 href={'/movies'}
-                className={`px-6 py-4 hover:bg-color-secondary ${handleActiveNav('/movies')}`}
+                className={`px-6 py-4 transition-colors hover:bg-color-secondary ${handleActiveNav('/movies')}`}
             >
                 Movies
             </Link>
 
             <div
-                className={`${handleActiveNav('/genres')} flex cursor-default items-center justify-between gap-2 px-6 py-4 hover:bg-color-secondary`}
+                className={`${handleActiveNav('/genres')} flex cursor-default items-center justify-between gap-2 px-6 py-4 transition-colors hover:bg-color-secondary`}
                 onClick={() => setGenreHover((prev) => !prev)}
             >
                 Genres
@@ -66,13 +66,13 @@ const Responsive = ({ pathname, FaChevronDown, toggleNav }) => {
 
             <Link
                 href={'/collections'}
-                className={`px-6 py-4 hover:bg-color-secondary ${handleActiveNav('/collections')}`}
+                className={`px-6 py-4 transition-colors hover:bg-color-secondary ${handleActiveNav('/collections')}`}
             >
                 Collections
             </Link>
             <Link
                 href={'/search'}
-                className={`px-6 py-4 hover:bg-color-secondary ${
+                className={`px-6 py-4 transition-colors hover:bg-color-secondary ${
                     !pathname.includes('/search')
                         ? 'text-color-white/75'
                         : 'bg-color-light-accent'

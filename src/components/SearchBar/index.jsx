@@ -23,7 +23,7 @@ const SearchBar = ({ customWidth }) => {
 
     return (
         <div
-            className={`flex ${customWidth} items-center justify-between gap-4 rounded bg-color-white px-8 py-4`}
+            className={`flex ${customWidth} items-center justify-between gap-4 rounded bg-color-white px-4 py-3 lg:px-8 lg:py-4`}
         >
             <input
                 type="text"

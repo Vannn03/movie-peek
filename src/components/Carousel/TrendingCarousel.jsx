@@ -2,7 +2,6 @@
 
 import { oswald } from '@/app/fonts'
 import { getMovieResponse } from '@/libs/api-libs'
-import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
 import { FaCircleChevronLeft, FaCircleChevronRight } from 'react-icons/fa6'
 import 'swiper/css'
@@ -11,6 +10,7 @@ import 'swiper/css/autoplay'
 import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const TrendingCarousel = ({ baseImgUrl, resource }) => {
     const [data, setData] = useState([])
@@ -40,8 +40,8 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                     <Image
                         src={`${baseImgUrl}${value.backdrop_path}`}
                         alt="..."
-                        width={2000}
-                        height={2000}
+                        width={1900}
+                        height={750}
                         className="h-[75dvh] w-full object-cover object-top"
                     />
 
@@ -60,8 +60,8 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                             {value.title}
                         </h1>
                         <p className="text-lg text-color-white/75 md:text-xl">
-                            {value.overview.length > 200
-                                ? `${value.overview.slice(0, 200)}...`
+                            {value.overview.length > 150
+                                ? `${value.overview.slice(0, 150)}...`
                                 : value.overview}
                         </p>
                         <Link href={`/detail/${value.id}`}>

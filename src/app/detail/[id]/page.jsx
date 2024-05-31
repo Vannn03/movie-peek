@@ -46,32 +46,16 @@ const Page = async ({ params: { id } }) => {
 
     return (
         <main className="relative bg-color-primary">
-            {/* BACKGROUND IMAGE */}
-            {detail.backdrop_path !== null ? (
-                <Image
-                    src={`${baseImgUrl}${detail.backdrop_path}`}
-                    alt="..."
-                    width={2000}
-                    height={2000}
-                    className="hidden h-[50dvh] w-full object-cover xl:flex"
-                />
-            ) : (
-                <div className="hidden h-[50dvh] items-center justify-center bg-color-secondary xl:flex">
-                    <MdImageNotSupported className="size-20" />
-                </div>
-            )}
-            <div className="absolute top-0 hidden h-[50dvh] w-full bg-color-primary/50 xl:flex" />
-
             {/* DETAIL */}
-            <div className="flexc flex h-fit justify-between gap-8 p-6 sm:px-12 sm:py-10 lg:gap-12 lg:px-20 xl:flex-row">
+            <div className="flex h-fit justify-between gap-8 p-6 sm:px-12 sm:py-10 lg:gap-12 lg:px-20 xl:flex-row">
                 {/* POSTER IMAGE */}
-                <div className="md:w-2/5 xl:w-1/4 xl:-translate-y-96">
-                    <div className="flex flex-col gap-4 xl:sticky xl:top-[535px]">
+                <div className="md:w-2/5 xl:w-1/4">
+                    <div className="flex flex-col gap-4 xl:sticky xl:top-36">
                         {detail.poster_path !== null ? (
                             <Image
                                 src={`${baseImgUrl}${detail.poster_path}`}
                                 alt="..."
-                                width={500}
+                                width={300}
                                 height={500}
                                 className="mx-auto w-80 md:w-full"
                             />
@@ -128,6 +112,7 @@ const Page = async ({ params: { id } }) => {
                             type="text"
                             placeholder="Comment here..."
                             className="w-full cursor-not-allowed rounded bg-color-white px-6 py-4 text-color-primary opacity-50 outline-none md:text-lg xl:text-xl"
+                            disabled
                         />
                     </div>
                 </div>
