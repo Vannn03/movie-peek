@@ -25,7 +25,7 @@ const Page = ({ params: { keyword } }) => {
 
     return (
         <div className="bg-color-primary p-6">
-            <p className="text-lg font-medium text-color-white/75">
+            <p className="font-medium text-color-white/75 sm:text-lg">
                 Search results for:{' '}
                 <span className="italic">&apos;{decodedKeyword}&apos;</span>
             </p>

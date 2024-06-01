@@ -7,6 +7,7 @@ import { HiOutlineMenu } from 'react-icons/hi'
 import SearchBar from '../SearchBar'
 import SideBar from './SideBar'
 import { IoSearch } from 'react-icons/io5'
+import SortDropdown from '../SortDropdown'
 
 const Navbar = () => {
     const [toggleNav, setToggleNav] = useState(false)
@@ -40,8 +41,9 @@ const Navbar = () => {
                             height={200}
                             className="w-32 sm:w-40 md:w-48"
                         />
-                        <div className="hidden lg:flex">
-                            <SearchBar />
+                        <div className="hidden items-center gap-2 lg:flex">
+                            <SearchBar customWidth={'w-80'} />
+                            <SortDropdown customPosition={'top-16'} />
                         </div>
                     </div>
                     <div className="flex cursor-pointer items-center gap-2 sm:gap-4">
@@ -61,9 +63,14 @@ const Navbar = () => {
                 </div>
 
                 <div
-                    className={`bg-color-primary px-4 pb-2 sm:px-12 lg:hidden ${toggleSearch ? 'block' : 'hidden'}`}
+                    className={`gap-2 bg-color-primary px-4 pb-2 sm:px-12 lg:hidden ${toggleSearch ? 'flex' : 'hidden'}`}
                 >
-                    <SearchBar />
+                    <SearchBar customWidth={'w-full'} />
+                    <SortDropdown
+                        customPosition={
+                            'top-[100px] sm:top-[116px] md:top-[124px] lg:top-16'
+                        }
+                    />
                 </div>
             </header>
         </>
