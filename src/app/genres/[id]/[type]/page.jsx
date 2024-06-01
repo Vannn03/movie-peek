@@ -27,12 +27,10 @@ const Page = ({ params: { id, type } }) => {
     return (
         <div className="bg-color-primary p-6">
             <h1
-                className={`uppercase ${oswald.className} mb-4 text-xl font-semibold sm:text-2xl md:text-3xl`}
+                className={`uppercase ${oswald.className} border-b border-color-white/25 pb-4 text-xl font-semibold sm:text-2xl md:text-3xl`}
             >
                 genre: {decodedType}
             </h1>
-
-            <hr />
 
             <MovieGridList results={data} />
 

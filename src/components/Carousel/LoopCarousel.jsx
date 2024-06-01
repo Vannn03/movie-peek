@@ -61,7 +61,7 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
                                 height={500}
                                 className="w-fit"
                             />
-                            <h1 className="mt-3 text-sm sm:text-base lg:text-lg">
+                            <h1 className="mt-3 text-sm font-medium sm:text-base lg:text-lg">
                                 {value.title.length > 24
                                     ? `${value.title.slice(0, 24)}...`
                                     : value.title}

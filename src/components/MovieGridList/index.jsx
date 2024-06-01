@@ -25,7 +25,7 @@ const MovieGridList = ({ results }) => {
                                     </div>
                                 )}
 
-                                <div className="absolute top-0 h-full w-full bg-gradient-to-tl from-black/0 via-black/0 to-black" />
+                                <div className="absolute top-0 h-full w-full bg-gradient-to-tl from-black/0 via-black/0 to-black/75" />
 
                                 <div
                                     className={`absolute left-2 top-2 rounded-full border-2 px-3 py-1 sm:left-4 sm:top-4 sm:px-4 ${value.vote_average >= 8.5 ? 'border-green-500' : value.vote_average >= 7 ? 'border-yellow-500' : value.vote_average == 0 ? 'border-gray-500' : 'border-red-500'}`}
@@ -35,11 +35,11 @@ const MovieGridList = ({ results }) => {
                                     </p>
                                 </div>
 
-                                <div className="absolute top-0 h-full w-full bg-gradient-to-b from-black/0 via-black/0 to-black" />
+                                <div className="absolute top-0 h-full w-full bg-gradient-to-b from-black/0 via-black/0 to-black/75" />
 
-                                <h1 className="absolute bottom-0 p-2 text-sm sm:p-4 sm:text-base lg:text-lg">
-                                    {value.title.length > 25
-                                        ? `${value.title.slice(0, 25)}...`
+                                <h1 className="absolute bottom-0 p-2 text-sm font-medium sm:p-4 sm:text-base lg:text-lg">
+                                    {value.title.length > 24
+                                        ? `${value.title.slice(0, 24)}...`
                                         : value.title}
                                 </h1>
                             </Link>

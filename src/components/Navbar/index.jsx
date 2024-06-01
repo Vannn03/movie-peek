@@ -27,8 +27,8 @@ const Navbar = () => {
                     toggleNav={toggleNav}
                     setToggleNav={setToggleNav}
                 />
-                <div className="flex items-center justify-between bg-color-primary px-6 py-2 sm:px-12">
-                    <div className="flex items-center gap-4 sm:gap-6">
+                <div className="flex items-center justify-between bg-color-primary px-4 py-2 sm:px-12">
+                    <div className="flex items-center gap-2 sm:gap-4">
                         <HiOutlineMenu
                             className={`cursor-pointer text-2xl sm:text-3xl`}
                             onClick={() => setToggleNav(true)}
@@ -44,12 +44,12 @@ const Navbar = () => {
                             <SearchBar />
                         </div>
                     </div>
-                    <div className="flex cursor-pointer items-center gap-4 sm:gap-6">
+                    <div className="flex cursor-pointer items-center gap-2 sm:gap-4">
                         <div
-                            className="flex lg:hidden"
+                            className="flex p-2 transition-colors hover:bg-color-secondary lg:hidden"
                             onClick={() => setToggleSearch((prev) => !prev)}
                         >
-                            <IoSearch className="text-2xl sm:text-3xl" />
+                            <IoSearch className="text-xl sm:text-2xl" />
                         </div>
                         <button
                             className={`cursor-not-allowed rounded-sm bg-color-light-accent px-4 py-2 text-sm font-medium opacity-75 sm:px-6 sm:text-base md:text-lg`}
@@ -61,7 +61,7 @@ const Navbar = () => {
                 </div>
 
                 <div
-                    className={`bg-color-primary px-6 pb-2 sm:px-12 lg:hidden ${toggleSearch ? 'block' : 'hidden'}`}
+                    className={`bg-color-primary px-4 pb-2 sm:px-12 lg:hidden ${toggleSearch ? 'block' : 'hidden'}`}
                 >
                     <SearchBar />
                 </div>

@@ -25,7 +25,7 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
 
     const handleSecondNextPage = () => {
         setCurrentPage((prev) => prev + 2)
-        scrollTop
+        scrollTop()
     }
 
     const handleLastPage = () => {
@@ -42,17 +42,17 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
         <div className="mt-8 flex items-center justify-center px-6">
             <div
                 onClick={handleFirstPage}
-                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
+                className="cursor-pointer rounded-full p-2 hover:bg-color-secondary sm:p-4"
             >
                 <HiOutlineChevronDoubleLeft />
             </div>
             <div
                 onClick={handlePrevPage}
-                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
+                className="cursor-pointer rounded-full p-2 hover:bg-color-secondary sm:p-4"
             >
                 <FaChevronLeft />
             </div>
-            <div className="mx-4 flex items-center gap-1">
+            <div className="mx-2 flex items-center gap-1 sm:mx-4">
                 <p className="cursor-default bg-color-light-accent px-3 py-2 sm:px-4  sm:text-lg">
                     {currentPage}
                 </p>
@@ -74,7 +74,7 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
                         )}
                     </>
                 )}
-                <p className="cursor-default px-3 py-2 sm:px-4">...</p>
+                <p className="cursor-default px-1 sm:px-2">...</p>
                 <p
                     className="cursor-pointer px-3 py-2 hover:bg-color-secondary sm:px-4 sm:text-lg"
                     onClick={handleLastPage}
@@ -84,7 +84,7 @@ const Pagination = ({ currentPage, setCurrentPage, lastPage }) => {
             </div>
             <div
                 onClick={handleNextPage}
-                className="cursor-pointer rounded-full p-3 hover:bg-color-secondary sm:p-4"
+                className="cursor-pointer rounded-full p-2 hover:bg-color-secondary sm:p-4"
             >
                 <FaChevronRight />
             </div>
