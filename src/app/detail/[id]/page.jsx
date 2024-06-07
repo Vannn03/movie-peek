@@ -1,9 +1,13 @@
 import { oswald } from '@/app/fonts'
+import CollectionButton from '@/components/CollectionButton/CollectionButton'
+import CommentInput from '@/components/Comment/CommentInput'
+import CommentOutput from '@/components/Comment/CommentOutput'
 import CreditList from '@/components/CreditList'
 import VideoPlayer from '@/components/VideoPlayer'
 import { getMovieResponse } from '@/libs/api-libs'
+import { authUserSessionServer } from '@/libs/auth-libs'
+import prisma from '@/libs/prisma'
 import Image from 'next/image'
-import { FaBookmark } from 'react-icons/fa6'
 import { MdImageNotSupported } from 'react-icons/md'
 
 const Page = async ({ params: { id } }) => {
@@ -13,6 +17,13 @@ const Page = async ({ params: { id } }) => {
     )
     const { cast, crew } = await getMovieResponse(`/movie/${id}/credits`, '')
     const baseImgUrl = process.env.NEXT_PUBLIC_API_BASE_IMG_URL
+
+    const user = await authUserSessionServer()
+
+    // Find one matching movie
+    const collectionDB = await prisma.collection.findFirst({
+        where: { userEmail: user?.email, movieId: id },
+    })
 
     const genresString = detail.genres.map((data) => data.name).join(', ')
 
@@ -103,10 +114,14 @@ const Page = async ({ params: { id } }) => {
                         <p className="hidden text-center text-sm text-color-white/75 sm:flex sm:text-base md:text-lg lg:text-start lg:text-xl">
                             {detail.overview}
                         </p>
-
-                        <button className="flex w-fit cursor-not-allowed items-center justify-center gap-2 rounded-sm bg-color-light-accent px-8 py-3 text-sm font-medium opacity-50 sm:text-base md:text-lg">
-                            <FaBookmark /> Save to collection
-                        </button>
+                        <CollectionButton
+                            movieId={id}
+                            userEmail={user?.email}
+                            collectionDB={collectionDB}
+                            movieImage={detail.poster_path}
+                            movieTitle={detail.title}
+                            user={user}
+                        />
                     </div>
                 </div>
             </div>
@@ -142,20 +157,18 @@ const Page = async ({ params: { id } }) => {
                     </div>
                 </div>
 
-                <hr />
+                <hr className="border-color-white/35" />
 
-                <div>
-                    <h1
-                        className={`${oswald.className} mb-6 text-2xl font-medium md:text-3xl`}
-                    >
-                        Comment
-                    </h1>
-                    <textarea
-                        type="text"
-                        placeholder="Comment here..."
-                        className="w-full cursor-not-allowed rounded bg-color-white px-4 py-3 text-color-primary opacity-50 outline-none md:text-lg xl:text-xl"
-                        disabled
+                <div className="mx-auto flex w-full flex-col gap-4 lg:w-[800px]">
+                    <CommentInput
+                        movieId={id}
+                        userEmail={user?.email}
+                        movieTitle={detail.title}
+                        userImage={user?.image}
+                        userName={user?.name}
+                        user={user}
                     />
+                    <CommentOutput movieId={id} />
                 </div>
             </div>
 

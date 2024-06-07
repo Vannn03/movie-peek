@@ -40,7 +40,7 @@ const Page = ({ params: { type } }) => {
                 </p>
 
                 <button
-                    className="flex items-center gap-2 rounded-full border border-color-light-accent px-3 py-2 text-color-light-accent sm:px-4 sm:py-3"
+                    className="flex items-center gap-2 rounded-full border border-color-light-accent px-6 py-3 text-sm text-color-light-accent transition-all hover:brightness-105 sm:text-base"
                     onClick={() => setSortOrder((prev) => !prev)}
                 >
                     <span className="text-sm font-medium sm:text-base">

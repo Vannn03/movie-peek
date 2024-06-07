@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { FaXmark } from 'react-icons/fa6'
+import { FaPlay, FaXmark } from 'react-icons/fa6'
 import YouTube from 'react-youtube'
 
 const VideoPlayer = ({ detail }) => {
@@ -14,10 +14,16 @@ const VideoPlayer = ({ detail }) => {
         <>
             <div className="fixed bottom-6 right-6 z-40 sm:bottom-12 sm:right-12">
                 <button
-                    className={`flex ${toggleTrailer ? 'w-fit' : 'w-full'} gap-2 rounded-sm bg-color-light-accent px-8 py-3 text-sm font-medium shadow-2xl sm:text-base md:text-lg`}
+                    className={`flex ${toggleTrailer ? 'w-fit' : 'w-full'} items-center gap-2 rounded-full bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary shadow-2xl transition-all hover:brightness-105 sm:text-base md:text-lg`}
                     onClick={() => setToggleTrailer((prev) => !prev)}
                 >
-                    {toggleTrailer ? <FaXmark /> : 'Watch Trailer'}
+                    {toggleTrailer ? (
+                        <FaXmark />
+                    ) : (
+                        <>
+                            <FaPlay /> Watch Trailer
+                        </>
+                    )}
                 </button>
             </div>
             {trailer && (

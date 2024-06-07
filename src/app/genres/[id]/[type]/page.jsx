@@ -1,5 +1,6 @@
 'use client'
 
+import { oswald } from '@/app/fonts'
 import MovieGridList from '@/components/MovieGridList'
 import Pagination from '@/components/Pagination'
 import { getMovieResponse } from '@/libs/api-libs'
@@ -25,8 +26,11 @@ const Page = ({ params: { id, type } }) => {
 
     return (
         <div className="bg-color-primary p-6">
-            <h1 className={`font-medium text-color-white/75 sm:text-lg`}>
-                Genre type: <span className="italic">{decodedType}</span>
+            <h1
+                className={`${oswald.className} text-2xl font-semibold sm:text-4xl`}
+            >
+                <span className="uppercase">{decodedType.slice(0, 1)}</span>
+                {decodedType.slice(1, decodedType.length)}
             </h1>
 
             <MovieGridList results={data} />

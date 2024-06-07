@@ -15,7 +15,7 @@ const SearchBar = ({ customWidth }) => {
             return
         }
 
-        if (event.key === 'Enter' || event.type === 'click') {
+        if (event.key === 'Enter') {
             event.preventDefault()
             router.push(`/search/${searchValue}`)
         }
@@ -23,16 +23,16 @@ const SearchBar = ({ customWidth }) => {
 
     return (
         <div
-            className={`flex w-full items-center justify-between gap-4 rounded-sm bg-color-white px-3 py-3 sm:px-4`}
+            className={`flex w-full items-center justify-between gap-4 rounded-lg border border-color-white/35 px-3 py-3 sm:px-4`}
         >
             <input
                 type="text"
                 placeholder="Search movie..."
-                className={`${customWidth} bg-color-white text-sm text-color-primary outline-none sm:text-base`}
+                className={`${customWidth} bg-transparent text-sm outline-none sm:text-base`}
                 ref={searchRef}
                 onKeyDown={handleSearch}
             />
-            <IoSearch className="text-xl text-color-primary/35 sm:text-2xl" />
+            <IoSearch className="text-xl text-color-white/50 sm:text-2xl" />
         </div>
     )
 }
