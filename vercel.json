@@ -1,0 +1,20 @@
+{
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node",
+        "config": {
+          "includeFiles": [
+            "prisma/schema.prisma"
+          ]
+        }
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/api"
+      }
+    ]
+  }
+  
