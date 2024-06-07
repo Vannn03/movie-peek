@@ -29,21 +29,21 @@ const SortDropdown = ({ customPosition }) => {
     ]
 
     return (
-        <div classname="relative">
+        <div className="relative">
             <div
-                className="flex w-36 cursor-default items-center justify-between rounded-sm bg-color-white px-3 py-3 sm:w-40 sm:px-4"
+                className="flex w-36 cursor-pointer items-center justify-between rounded-lg border border-color-secondary bg-color-secondary px-3 py-3 sm:w-40 sm:px-4"
                 onClick={() => setDropdown((prev) => !prev)}
             >
-                <p className="text-sm font-medium text-color-primary/35 sm:text-base">
+                <p className="text-sm text-color-white/50 sm:text-base">
                     {activeValue !== '' ? activeValue : 'Sort by'}
                 </p>
-                <span className="border-l border-color-primary/35 pl-2">
-                    <FaChevronDown className="text-xs text-color-primary sm:text-sm" />
+                <span className="border-l border-color-white/35 pl-2">
+                    <FaChevronDown className="text-xs text-color-white sm:text-sm" />
                 </span>
             </div>
 
             <div
-                className={`absolute ${customPosition} w-36 rounded-sm bg-color-white text-color-primary transition-all sm:w-40 ${dropdown ? 'visibility-visible pointer-events-auto top-16 opacity-100' : 'visibility-hidden pointer-events-none top-12 opacity-0'}`}
+                className={`absolute ${customPosition} w-36 rounded-sm bg-color-secondary transition-all sm:w-40 ${dropdown ? 'visibility-visible pointer-events-auto top-16 opacity-100' : 'visibility-hidden pointer-events-none top-12 opacity-0'}`}
             >
                 {options.map((data, index) => (
                     <div

@@ -4,10 +4,11 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import { HiOutlineMenu } from 'react-icons/hi'
-import SearchBar from '../SearchBar'
-import SideBar from './SideBar'
 import { IoSearch } from 'react-icons/io5'
-import SortDropdown from '../SortDropdown'
+import SearchBar from './SearchBar'
+import SideBar from './SideBar'
+import SortDropdown from './SortDropdown'
+import SignButton from './SignButton'
 
 const Navbar = () => {
     const [toggleNav, setToggleNav] = useState(false)
@@ -43,7 +44,7 @@ const Navbar = () => {
                         />
                         <div className="hidden items-center gap-2 lg:flex">
                             <SearchBar customWidth={'w-80'} />
-                            <SortDropdown customPosition={'top-16'} />
+                            <SortDropdown customPosition={'top-[55px]'} />
                         </div>
                     </div>
                     <div className="flex cursor-pointer items-center gap-2 sm:gap-4">
@@ -53,12 +54,7 @@ const Navbar = () => {
                         >
                             <IoSearch className="text-xl sm:text-2xl" />
                         </div>
-                        <button
-                            className={`cursor-not-allowed rounded-sm bg-color-light-accent px-4 py-2 text-sm font-medium opacity-75 sm:px-6 sm:text-base md:text-lg`}
-                            disabled
-                        >
-                            Sign up
-                        </button>
+                        <SignButton />
                     </div>
                 </div>
 
@@ -68,7 +64,7 @@ const Navbar = () => {
                     <SearchBar customWidth={'w-full'} />
                     <SortDropdown
                         customPosition={
-                            'top-[100px] sm:top-[116px] md:top-[124px] lg:top-16'
+                            'top-[50px] sm:top-[54px] md:top-[55px]'
                         }
                     />
                 </div>

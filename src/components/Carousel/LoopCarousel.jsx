@@ -19,6 +19,8 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
         fetchData()
     }, [fetchData])
 
+    const slicedData = data.slice(0, 12)
+
     return (
         <>
             <Swiper
@@ -51,7 +53,7 @@ const LoopCarousel = ({ baseImgUrl, resource }) => {
                     },
                 }}
             >
-                {data.map((value) => (
+                {slicedData.map((value) => (
                     <SwiperSlide key={value.id} className="cursor-pointer">
                         <Link href={`/detail/${value.id}`}>
                             <Image

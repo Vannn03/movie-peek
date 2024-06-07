@@ -28,6 +28,8 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
         fetchData()
     }, [fetchData])
 
+    const slicedData = data.slice(0, 10)
+
     return (
         <Swiper
             modules={[Autoplay, Navigation]}
@@ -39,7 +41,7 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                 prevEl: '.btn-prev',
             }}
         >
-            {data.map((value, index) => (
+            {slicedData.map((value, index) => (
                 <SwiperSlide key={value.id} className="relative">
                     <Image
                         src={`${baseImgUrl}${value.backdrop_path}`}
@@ -69,7 +71,7 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                                 : value.overview}
                         </p>
                         <Link href={`/detail/${value.id}`}>
-                            <button className="flex w-fit items-center gap-2 rounded-sm bg-color-light-accent px-6 py-3 text-sm font-medium sm:text-base md:text-lg lg:text-xl">
+                            <button className="flex w-fit items-center gap-2 rounded-full bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:text-base md:text-lg lg:text-xl">
                                 See detail{' '}
                                 <FaChevronRight className="text-base" />
                             </button>

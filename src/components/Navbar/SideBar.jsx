@@ -58,16 +58,10 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
                     </div>
                 </div>
                 <Link
-                    href={'/'}
-                    className={`cursor-not-allowed border-b border-color-white/25 px-6 py-4 transition-colors ${handleActiveNav('/collections')}`}
+                    href={'/users/dashboard'}
+                    className={`border-b border-color-white/25 px-6 py-4 transition-colors hover:text-color-light-accent ${handleActiveNav('/users/dashboard')}`}
                 >
-                    Collections
-                </Link>
-                <Link
-                    href={'/'}
-                    className={`cursor-not-allowed border-b border-color-white/25 px-6 py-4 transition-colors ${handleActiveNav('/account')}`}
-                >
-                    Account
+                    My Account
                 </Link>
             </nav>
         </aside>

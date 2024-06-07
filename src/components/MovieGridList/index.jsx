@@ -47,8 +47,8 @@ const MovieGridList = ({ results }) => {
                     ))}
                 </div>
             ) : (
-                <div className="mt-8 h-[50dvh] text-center italic text-color-white/75">
-                    <p>Movies not found</p>
+                <div className="flex h-[83dvh] items-center justify-center text-lg font-medium uppercase text-color-light-accent">
+                    <p>No results found.</p>
                 </div>
             )}
         </>

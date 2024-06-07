@@ -5,6 +5,9 @@ const nextConfig = {
             {
                 hostname: 'image.tmdb.org',
             },
+            {
+                hostname: 'lh3.googleusercontent.com',
+            },
         ],
     },
 }
