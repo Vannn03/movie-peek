@@ -1,0 +1,35 @@
+name: Deploy to Production
+
+on:
+    push:
+        branches:
+            - main # or your deployment branch
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: '16' # Use the appropriate Node.js version
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build project
+              run: npm run build
+
+            - name: Deploy
+              env:
+                  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+                  # Add other secrets as needed
+              run: |
+                  echo "Deploying to production..."
+                  # Your deployment command here, for example:
+                  # vercel --prod
