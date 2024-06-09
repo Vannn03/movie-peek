@@ -1,8 +1,6 @@
 'use client'
 
 import { oswald } from '@/app/fonts'
-import { getMovieResponse } from '@/libs/api-libs'
-import { useCallback, useEffect, useState } from 'react'
 import {
     FaChevronRight,
     FaCircleChevronLeft,
@@ -16,19 +14,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const TrendingCarousel = ({ baseImgUrl, resource }) => {
-    const [data, setData] = useState([])
-
-    const fetchData = useCallback(async () => {
-        const movie = await getMovieResponse(resource, 'page=1')
-        setData(movie.results)
-    }, [resource])
-
-    useEffect(() => {
-        fetchData()
-    }, [fetchData])
-
-    const slicedData = data.slice(0, 10)
+const TrendingCarousel = ({ baseImgUrl, results }) => {
+    const slicedData = results.slice(0, 10)
 
     return (
         <Swiper
@@ -59,7 +46,7 @@ const TrendingCarousel = ({ baseImgUrl, resource }) => {
                         </p>
                     </div>
 
-                    <div className="absolute top-1/2 mx-6 flex -translate-y-1/2 flex-col gap-6 sm:mx-12 sm:gap-8 md:mx-20 xl:w-[1000px]">
+                    <div className="absolute top-1/2 mx-6 flex -translate-y-1/2 flex-col gap-6 sm:mx-12 sm:gap-8 md:mx-20 lg:w-[800px]">
                         <h1
                             className={`${oswald.className} text-2xl font-semibold sm:text-4xl md:text-5xl lg:text-6xl`}
                         >

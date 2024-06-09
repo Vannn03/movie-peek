@@ -1,9 +1,21 @@
 import LoopCarousel from '@/components/Carousel/LoopCarousel'
 import TrendingCarousel from '@/components/Carousel/TrendingCarousel'
 import { oswald } from './fonts'
+import { getMovieResponse } from '@/libs/api-libs'
 
-const Home = () => {
+const Home = async () => {
+    const trending = await getMovieResponse('trending/movie/week', 'page=1')
+    const popular = await getMovieResponse('movie/popular', 'page=1')
+    const topRated = await getMovieResponse('movie/top_rated', 'page=1')
     const baseImgUrl = process.env.NEXT_PUBLIC_API_BASE_IMG_URL
+
+    const subTitle = (name) => (
+        <h1
+            className={`${oswald.className} mb-6 text-2xl font-medium sm:text-3xl lg:text-4xl`}
+        >
+            {name}
+        </h1>
+    )
 
     return (
         <main className="bg-color-primary">
@@ -11,31 +23,23 @@ const Home = () => {
             <section>
                 <TrendingCarousel
                     baseImgUrl={baseImgUrl}
-                    resource={'trending/movie/week'}
+                    results={trending.results}
                 />
             </section>
             {/* Recommended */}
             <section className="px-6 py-12 sm:px-12">
-                <h1
-                    className={`${oswald.className} mb-6 text-2xl font-medium sm:text-3xl lg:text-4xl`}
-                >
-                    Recommended Movies
-                </h1>
+                {subTitle('Recommended Movies')}
                 <LoopCarousel
                     baseImgUrl={baseImgUrl}
-                    resource={'movie/popular'}
+                    results={popular.results}
                 />
             </section>
             {/* Top Rated */}
             <section className="px-6 py-12 sm:px-12">
-                <h1
-                    className={`${oswald.className} mb-6 text-2xl font-medium sm:text-3xl lg:text-4xl`}
-                >
-                    Best Movies of All Time
-                </h1>
+                {subTitle('Top Rated Movies')}
                 <LoopCarousel
                     baseImgUrl={baseImgUrl}
-                    resource={'movie/top_rated'}
+                    results={topRated.results}
                 />
             </section>
         </main>

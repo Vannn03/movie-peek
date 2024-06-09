@@ -3,23 +3,11 @@
 import { getMovieResponse } from '@/libs/api-libs'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useCallback, useEffect, useState } from 'react'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-const LoopCarousel = ({ baseImgUrl, resource }) => {
-    const [data, setData] = useState([])
-
-    const fetchData = useCallback(async () => {
-        const movie = await getMovieResponse(resource, 'page=1')
-        setData(movie.results)
-    }, [resource])
-
-    useEffect(() => {
-        fetchData()
-    }, [fetchData])
-
-    const slicedData = data.slice(0, 12)
+const LoopCarousel = ({ baseImgUrl, results }) => {
+    const slicedData = results.slice(0, 12)
 
     return (
         <>
