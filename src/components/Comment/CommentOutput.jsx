@@ -28,7 +28,7 @@ const CommentOutput = async ({ movieId }) => {
                             className="size-8 rounded-full"
                         />
                         <div className="flex flex-col gap-1">
-                            <h1 className="text-sm font-medium sm:text-base">
+                            <h1 className="text-sm font-medium text-color-white/75 sm:text-base">
                                 {data.userName}
                             </h1>
                             <p className="sm:text-lg">{data.comment}</p>

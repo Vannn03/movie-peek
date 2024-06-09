@@ -31,7 +31,7 @@ const SortDropdown = ({ customPosition }) => {
     return (
         <div className="relative">
             <div
-                className="flex w-36 cursor-pointer items-center justify-between rounded-lg border border-color-secondary bg-color-secondary px-3 py-3 sm:w-40 sm:px-4"
+                className="flex w-36 cursor-pointer items-center justify-between rounded-lg border border-color-white/35 bg-color-secondary px-3 py-3 sm:w-40 sm:px-4"
                 onClick={() => setDropdown((prev) => !prev)}
             >
                 <p className="text-sm text-color-white/50 sm:text-base">

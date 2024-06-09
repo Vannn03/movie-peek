@@ -99,7 +99,7 @@ const Page = async ({ params: { id } }) => {
                     )}
                     <div className="flex flex-col items-center gap-6 lg:items-start lg:gap-8">
                         <h1
-                            className={`${oswald.className} text-3xl font-semibold sm:text-4xl lg:text-5xl`}
+                            className={`${oswald.className} text-3xl font-semibold sm:text-4xl lg:text-center lg:text-5xl`}
                         >
                             {detail.title}
                         </h1>

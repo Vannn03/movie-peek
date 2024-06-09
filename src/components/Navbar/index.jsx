@@ -23,13 +23,13 @@ const Navbar = () => {
                 }`}
                 onClick={() => setToggleNav(false)}
             />
-            <header className="sticky top-0 z-50 w-full border-b border-color-white/25">
+            <header className="sticky top-0 z-50 w-full">
                 <SideBar
                     pathname={pathname}
                     toggleNav={toggleNav}
                     setToggleNav={setToggleNav}
                 />
-                <div className="flex items-center justify-between bg-color-primary px-4 py-2 sm:px-12">
+                <div className="flex items-center justify-between border-b border-color-white/35 bg-color-primary px-4 py-2 sm:px-12">
                     <div className="flex items-center gap-2 sm:gap-4">
                         <HiOutlineMenu
                             className={`cursor-pointer text-2xl sm:text-3xl`}
