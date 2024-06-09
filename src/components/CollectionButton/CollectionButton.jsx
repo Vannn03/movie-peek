@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { FaBookmark, FaX } from 'react-icons/fa6'
 
 const CollectionButton = ({
@@ -12,11 +13,14 @@ const CollectionButton = ({
     movieTitle,
     user,
 }) => {
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     // POST Data
     const handlePostCollection = async (event) => {
         event.preventDefault()
+
+        setLoading(true)
 
         const data = { movieId, userEmail, movieImage, movieTitle }
 
@@ -33,6 +37,7 @@ const CollectionButton = ({
         if (collection.status == 200) {
             router.refresh()
         }
+        setLoading(false)
         return
     }
 
@@ -40,7 +45,10 @@ const CollectionButton = ({
     const handleDeleteCollection = async (event) => {
         event.preventDefault()
 
+        setLoading(true)
+
         const data = { movieId, userEmail }
+
         const response = await fetch('/api/v1/collections', {
             method: 'DELETE',
             headers: {
@@ -54,6 +62,7 @@ const CollectionButton = ({
         if (responseData.status === 200) {
             router.refresh()
         }
+        setLoading(false)
     }
 
     return (
@@ -61,25 +70,37 @@ const CollectionButton = ({
             {!user ? (
                 <Link
                     href={'/api/auth/signin'}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary sm:text-base md:text-lg`}
+                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary sm:text-base md:text-lg`}
                 >
                     <FaBookmark /> Add to collection
                 </Link>
             ) : collectionDB?.movieId == movieId ? (
                 <button
                     onClick={handleDeleteCollection}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-color-light-accent bg-color-secondary px-6 py-3 text-sm font-medium text-color-light-accent transition-all hover:brightness-105 sm:text-base md:text-lg`}
+                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-secondary px-6 py-3 text-sm font-medium text-color-light-accent transition-all hover:brightness-105 sm:text-base md:text-lg`}
                 >
-                    <FaX />
-                    Remove from Collection
+                    {loading ? (
+                        <div className="collection-loader" />
+                    ) : (
+                        <>
+                            <FaX />
+                            Remove from Collection
+                        </>
+                    )}
                 </button>
             ) : (
                 <button
                     onClick={handlePostCollection}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:text-base md:text-lg`}
+                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:text-base md:text-lg`}
                 >
-                    <FaBookmark />
-                    Add to collection
+                    {loading ? (
+                        <div className="collection-loader" />
+                    ) : (
+                        <>
+                            <FaBookmark />
+                            Add to collection
+                        </>
+                    )}
                 </button>
             )}
         </>

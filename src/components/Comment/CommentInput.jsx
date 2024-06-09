@@ -15,6 +15,7 @@ const CommentInput = ({
     user,
 }) => {
     const [comment, setComment] = useState('')
+    const [loading, setLoading] = useState(false)
     const router = useRouter()
 
     const handleCommentChange = (event) => {
@@ -28,6 +29,8 @@ const CommentInput = ({
         }
 
         event.preventDefault()
+
+        setLoading(true)
 
         const data = {
             movieId,
@@ -52,6 +55,9 @@ const CommentInput = ({
             setComment('')
             router.refresh()
         }
+
+        setLoading(false)
+
         return
     }
 
@@ -74,14 +80,22 @@ const CommentInput = ({
                         href={'/api/auth/signin'}
                         className="px-4 py-3 font-medium transition-all hover:brightness-105"
                     >
-                        <IoSend className="size-6 text-color-light-accent" />
+                        {loading ? (
+                            <div className="comment-loader" />
+                        ) : (
+                            <IoSend className="size-6 text-color-light-accent" />
+                        )}
                     </Link>
                 ) : (
                     <button
                         onClick={handlePostComment}
                         className="px-4 py-3 font-medium transition-all hover:brightness-105"
                     >
-                        <IoSend className="size-6 text-color-light-accent" />
+                        {loading ? (
+                            <div className="comment-loader" />
+                        ) : (
+                            <IoSend className="size-6 text-color-light-accent" />
+                        )}
                     </button>
                 )}
             </div>

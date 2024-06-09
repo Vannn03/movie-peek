@@ -6,6 +6,7 @@ body {
     color: #f2f2f2;
 }
 
+/* Custom Scrollbar */
 html::-webkit-scrollbar {
     width: 1vw;
 }
@@ -18,63 +19,33 @@ html::-webkit-scrollbar-track {
     background-color: #272B35;
 }
 
+/* loading.js spinner */
 .spinner {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 9px solid #e25050;
-  animation: spinner-bulqg1 0.8s infinite linear alternate,
-       spinner-oaa3wk 1.6s infinite linear;
-}
+   width: 50px;
+   aspect-ratio: 1;
+   border-radius: 50%;
+   border: 8px solid #E25050;
+   animation:
+     l20-1 0.8s infinite linear alternate,
+     l20-2 1.6s infinite linear;
+ }
+ @keyframes l20-1{
+    0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+    12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+    25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+    50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+    62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+    75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+    100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+ }
+ @keyframes l20-2{ 
+   0%    {transform:scaleY(1)  rotate(0deg)}
+   49.99%{transform:scaleY(1)  rotate(135deg)}
+   50%   {transform:scaleY(-1) rotate(0deg)}
+   100%  {transform:scaleY(-1) rotate(-135deg)}
+ }
 
-@keyframes spinner-bulqg1 {
-  0% {
-     clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
-  }
-
-  12.5% {
-     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
-  }
-
-  25% {
-     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
-  }
-
-  50% {
-     clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
-  }
-
-  62.5% {
-     clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
-  }
-
-  75% {
-     clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
-  }
-
-  100% {
-     clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
-  }
-}
-
-@keyframes spinner-oaa3wk {
-  0% {
-     transform: scaleY(1) rotate(0deg);
-  }
-
-  49.99% {
-     transform: scaleY(1) rotate(135deg);
-  }
-
-  50% {
-     transform: scaleY(-1) rotate(0deg);
-  }
-
-  100% {
-     transform: scaleY(-1) rotate(-135deg);
-  }
-}
-
+/* Hide sidebar scrollbar */
 .hide-scrollbar {
    scrollbar-width: none; /* Firefox */
    -ms-overflow-style: none; /* IE 10+ */
@@ -83,4 +54,40 @@ html::-webkit-scrollbar-track {
 .hide-scrollbar::-webkit-scrollbar { /* WebKit */
    width: 0;
    height: 0;
+}
+
+/* Collection Button Loader */
+.collection-loader {
+    width: 20px;
+    aspect-ratio: 1;
+    --c: no-repeat linear-gradient(#f2f2f2 0 0);
+    background: 
+      var(--c) 0%   50%,
+      var(--c) 50%  50%,
+      var(--c) 100% 50%;
+    background-size: 20% 100%;
+    animation: l1 1s infinite linear;
+  }
+  @keyframes l1 {
+    0%  {background-size: 20% 100%,20% 100%,20% 100%}
+    33% {background-size: 20% 10% ,20% 100%,20% 100%}
+    50% {background-size: 20% 100%,20% 10% ,20% 100%}
+    66% {background-size: 20% 100%,20% 100%,20% 10% }
+    100%{background-size: 20% 100%,20% 100%,20% 100%}
+  }
+
+/* Comment Input Loader */
+.comment-loader {
+  width: 24px;
+  aspect-ratio: 1;
+  background: 
+    linear-gradient(#E2505000 calc(1*100%/6),#E25050 0 calc(3*100%/6),#E2505000 0) left   bottom,
+    linear-gradient(#E2505000 calc(2*100%/6),#E25050 0 calc(4*100%/6),#E2505000 0) center bottom,
+    linear-gradient(#E2505000 calc(3*100%/6),#E25050 0 calc(5*100%/6),#E2505000 0) right  bottom;
+  background-size: 20% 600%;
+  background-repeat: no-repeat;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+    100% {background-position: left top,center top,right top }
 }
