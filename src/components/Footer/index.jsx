@@ -29,7 +29,7 @@ const Footer = () => {
                             {data.header}
                         </h1>
                         <div className="flex flex-col gap-2">
-                            {data.contents.map((content) => (
+                            {data.contents.map((content, index) => (
                                 <p
                                     key={index}
                                     className="cursor-pointer text-sm text-color-white/75 transition-colors hover:text-color-light-accent sm:text-base"

@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "./generated/client"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -25,11 +25,12 @@ model Collection {
 }
 
 model Comment {
-  id         Int    @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   movieId    String
   userEmail  String
-  movieTitle String
+  movieTitle String?
   userImage  String
   userName   String
   comment    String
+  createdAt  DateTime @default(now())
 }

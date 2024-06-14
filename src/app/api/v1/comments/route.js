@@ -2,15 +2,15 @@ import prisma from '@/libs/prisma'
 
 // Send Data to Database
 export async function POST(request) {
-    const { movieId, userEmail, userImage, userName, comment, movieTitle } =
+    const { movieId, userEmail, comment, userImage, userName, movieTitle } =
         await request.json()
 
     const data = {
         movieId,
         userEmail,
+        comment,
         userImage,
         userName,
-        comment,
         movieTitle,
     }
 

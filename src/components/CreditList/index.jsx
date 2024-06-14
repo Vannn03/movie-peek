@@ -18,9 +18,9 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
             </h1>
             {credit.length !== 0 ? (
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-2">
-                    {limitedCredit.map((data) => (
+                    {limitedCredit.map((data, index) => (
                         <div
-                            key={data.id}
+                            key={index}
                             className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4"
                         >
                             {data.profile_path !== null ? (

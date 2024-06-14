@@ -51,7 +51,7 @@ const CommentInput = ({
 
         const createComment = await response.json()
 
-        if (createComment.status == 200) {
+        if (createComment.isCreated) {
             setComment('')
             router.refresh()
         }
@@ -66,7 +66,7 @@ const CommentInput = ({
             <h1
                 className={`${oswald.className} text-2xl font-medium md:text-4xl`}
             >
-                Comment
+                Comments
             </h1>
             <div className="flex flex-col items-end gap-2 rounded-sm bg-color-white">
                 <textarea
