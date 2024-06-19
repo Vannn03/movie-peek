@@ -28,7 +28,7 @@ const MovieGridList = ({ results }) => {
                                 <div className="absolute top-0 h-full w-full bg-gradient-to-tl from-black/0 via-black/0 to-black/75" />
 
                                 <div
-                                    className={`absolute left-2 top-2 rounded-full border-2 px-3 py-1 sm:left-4 sm:top-4 sm:px-4 ${value.vote_average >= 8.5 ? 'border-green-500' : value.vote_average >= 7 ? 'border-yellow-500' : value.vote_average == 0 ? 'border-gray-500' : 'border-red-500'}`}
+                                    className={`absolute left-2 top-2 rounded-full border-2 px-3 py-1 sm:left-4 sm:top-4 sm:px-4 ${value.vote_average > 8 ? 'border-green-500' : value.vote_average > 6.5 ? 'border-yellow-500' : value.vote_average == 0 ? 'border-gray-500' : 'border-red-500'}`}
                                 >
                                     <p className="text-sm font-semibold sm:text-base">
                                         {value.vote_average?.toFixed(1)}

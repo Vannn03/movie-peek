@@ -14,7 +14,7 @@ const VideoPlayer = ({ detail }) => {
         <>
             <div className="fixed bottom-6 right-6 z-40 sm:bottom-12 sm:right-12">
                 <button
-                    className={`flex ${toggleTrailer ? 'w-fit' : 'w-full'} items-center gap-2 rounded-full bg-color-light-accent p-6 text-sm font-medium text-color-white shadow-2xl transition-all hover:brightness-105 sm:text-base md:text-lg`}
+                    className={`flex ${toggleTrailer ? 'w-fit' : 'w-full'} items-center gap-2 rounded-full bg-color-light-accent p-5 text-sm font-medium text-color-white shadow-2xl transition-all hover:brightness-105 sm:p-6 sm:text-base md:text-lg`}
                     onClick={() => setToggleTrailer((prev) => !prev)}
                 >
                     {toggleTrailer ? <FaXmark /> : <FaPlay />}

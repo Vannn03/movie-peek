@@ -126,7 +126,7 @@ const Page = async ({ params: { id } }) => {
                 </div>
             </div>
             {/* OTHER DETAIL */}
-            <div className="flex flex-col gap-6 p-6 sm:gap-8 sm:p-12">
+            <div className="mx-auto flex w-full flex-col gap-6 p-6 sm:gap-8 sm:p-12 xl:w-[1200px]">
                 <div className="grid grid-cols-1 gap-6 sm:gap-8">
                     <div className="flex h-fit flex-col gap-4 rounded bg-color-secondary p-6 sm:p-8">
                         {detailData.map((data, index) => (
@@ -143,7 +143,7 @@ const Page = async ({ params: { id } }) => {
                             </div>
                         ))}
                     </div>
-                    <div className="grid grid-cols-1 gap-6 sm:gap-8 xl:grid-cols-2">
+                    <div className="grid grid-cols-1 gap-6 sm:gap-8">
                         <CreditList
                             baseImgUrl={baseImgUrl}
                             credit={cast}
@@ -159,7 +159,7 @@ const Page = async ({ params: { id } }) => {
 
                 <hr className="border-color-white/35" />
 
-                <div className="mx-auto flex w-full flex-col gap-4 lg:w-[800px]">
+                <div className="mx-auto flex w-full flex-col gap-4">
                     <CommentInput
                         movieId={id}
                         userEmail={user?.email}

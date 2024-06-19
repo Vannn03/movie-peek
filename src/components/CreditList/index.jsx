@@ -17,7 +17,7 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                 {title}
             </h1>
             {credit.length !== 0 ? (
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-2">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                     {limitedCredit.map((data, index) => (
                         <div
                             key={index}
@@ -29,7 +29,7 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                                     alt="..."
                                     width={200}
                                     height={200}
-                                    className="size-16 rounded-full object-cover"
+                                    className="size-14 rounded-full object-cover lg:size-16"
                                 />
                             ) : (
                                 <div className="flex size-16 items-center justify-center rounded-full bg-color-primary">
