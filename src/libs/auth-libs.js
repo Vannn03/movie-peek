@@ -1,5 +1,4 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
-import { getServerSession } from 'next-auth'
+import { auth } from '@/auth'
 import { getSession } from 'next-auth/react'
 
 export const authUserSessionClient = async () => {
@@ -8,6 +7,6 @@ export const authUserSessionClient = async () => {
 }
 
 export const authUserSessionServer = async () => {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     return session?.user
 }
