@@ -70,14 +70,14 @@ const CollectionButton = ({
             {!user ? (
                 <Link
                     href={'/api/auth/signin'}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary sm:text-base md:text-lg`}
+                    className={`flex w-60 items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:w-72 sm:text-base md:text-lg`}
                 >
                     <FaBookmark /> Add to collection
                 </Link>
             ) : collectionDB?.movieId == movieId ? (
                 <button
                     onClick={handleDeleteCollection}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-secondary px-6 py-3 text-sm font-medium text-color-light-accent transition-all hover:brightness-105 sm:text-base md:text-lg`}
+                    className={`flex w-60 items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-secondary py-3 text-sm font-medium text-color-light-accent transition-all hover:brightness-105 sm:w-72 sm:text-base md:text-lg`}
                 >
                     {loading ? (
                         <div className="collection-loader" />
@@ -91,7 +91,7 @@ const CollectionButton = ({
             ) : (
                 <button
                     onClick={handlePostCollection}
-                    className={`flex w-fit items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent px-6 py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:text-base md:text-lg`}
+                    className={`flex w-60 items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:w-72 sm:text-base md:text-lg`}
                 >
                     {loading ? (
                         <div className="collection-loader" />

@@ -20,7 +20,7 @@ const SignButton = () => {
             {user ? null : (
                 <Link
                     href={'/api/auth/signin'}
-                    className="rounded-sm bg-color-light-accent px-4 py-2 text-sm font-medium sm:px-6 sm:text-base md:text-lg"
+                    className="rounded-full bg-color-light-accent px-4 py-2 text-sm  transition-all hover:brightness-105 sm:px-6 sm:text-base md:text-lg"
                 >
                     Sign in
                 </Link>

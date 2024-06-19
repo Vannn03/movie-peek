@@ -58,7 +58,7 @@ html::-webkit-scrollbar-track {
 
 /* Collection Button Loader */
 .collection-loader {
-  width: 20px;
+  width: 28px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 4px solid #f2f2f2;

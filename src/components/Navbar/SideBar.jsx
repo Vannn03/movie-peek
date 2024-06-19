@@ -27,7 +27,7 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
                 className="flex cursor-pointer justify-end pr-6"
                 onClick={() => setToggleNav(false)}
             >
-                <FaChevronLeft className="text-2xl" />
+                <FaChevronLeft className="text-xl sm:text-2xl" />
             </div>
             <nav className="hide-scrollbar flex h-full flex-col overflow-y-scroll">
                 <Link
