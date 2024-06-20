@@ -25,7 +25,6 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                         >
                             {data.profile_path !== null ? (
                                 <Image
-                                    unoptimized
                                     src={`${baseImgUrl}${data.profile_path}`}
                                     alt="..."
                                     width={200}
