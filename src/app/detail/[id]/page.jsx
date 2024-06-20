@@ -90,7 +90,7 @@ const Page = async ({ params: { id } }) => {
                             alt="..."
                             width={300}
                             height={500}
-                            className="w-60 rounded-sm sm:w-40 lg:w-fit"
+                            className="w-60 rounded-sm sm:w-40 lg:w-96"
                         />
                     ) : (
                         <div className="flex h-80 w-60 items-center justify-center rounded-sm bg-color-secondary sm:h-60 sm:w-40 lg:h-[500px] lg:w-96">

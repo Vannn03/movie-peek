@@ -32,7 +32,6 @@ const CommentOutput = async ({ movieId }) => {
                 {commentDB.map((data) => (
                     <div key={data.id} className="flex gap-4 sm:gap-6">
                         <Image
-                            unoptimized
                             src={data.userImage}
                             alt="..."
                             width={50}
