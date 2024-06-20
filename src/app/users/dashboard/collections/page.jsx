@@ -13,7 +13,7 @@ const Page = async () => {
     const baseImgUrl = process.env.NEXT_PUBLIC_API_BASE_IMG_URL
 
     return (
-        <div className="bg-color-primary p-6">
+        <div className="min-h-dvh bg-color-primary p-6">
             <h1
                 className={`${oswald.className} text-2xl font-semibold sm:text-4xl`}
             >

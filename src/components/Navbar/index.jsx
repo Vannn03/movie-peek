@@ -20,8 +20,10 @@ const Navbar = () => {
             {!pathname.includes('/signin') && !pathname.includes('/signout') ? (
                 <>
                     <div
-                        className={`fixed top-0 z-50 h-dvh w-dvw bg-black/75 transition-colors ${
-                            toggleNav ? 'flex' : 'hidden'
+                        className={`fixed top-0 z-50 h-dvh w-dvw bg-black/75 transition-all ${
+                            toggleNav
+                                ? 'visibility-visible pointer-events-auto opacity-100 '
+                                : 'visibility-hidden pointer-events-none opacity-0'
                         }`}
                         onClick={() => setToggleNav(false)}
                     />

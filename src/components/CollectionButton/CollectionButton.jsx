@@ -80,7 +80,7 @@ const CollectionButton = ({
                     className={`flex w-60 items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-secondary py-3 text-sm font-medium text-color-light-accent transition-all hover:brightness-105 sm:w-72 sm:text-base md:text-lg`}
                 >
                     {loading ? (
-                        <div className="collection-loader" />
+                        <div className="button-loader" />
                     ) : (
                         <>
                             <FaX />
@@ -94,7 +94,7 @@ const CollectionButton = ({
                     className={`flex w-60 items-center justify-center gap-2 rounded-full border border-color-light-accent bg-color-light-accent py-3 text-sm font-medium text-color-primary transition-all hover:brightness-105 sm:w-72 sm:text-base md:text-lg`}
                 >
                     {loading ? (
-                        <div className="collection-loader" />
+                        <div className="button-loader" />
                     ) : (
                         <>
                             <FaBookmark />

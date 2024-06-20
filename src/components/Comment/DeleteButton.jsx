@@ -1,14 +1,18 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import React from 'react'
-import { FaX } from 'react-icons/fa6'
+import { useState } from 'react'
+import { MdDelete } from 'react-icons/md'
 
 const DeleteButton = ({ commentId, userEmail }) => {
     const router = useRouter()
+    const [loading, setLoading] = useState(false)
+
     // DELETE DATA
     const handleDeleteComment = async (event) => {
         event.preventDefault()
+
+        setLoading(true)
 
         const data = { commentId, userEmail }
         const response = await fetch('/api/v1/comments', {
@@ -22,13 +26,21 @@ const DeleteButton = ({ commentId, userEmail }) => {
         const responseData = await response.json()
 
         if (responseData.status === 200) {
+            setLoading(false)
             router.refresh()
         }
     }
 
     return (
-        <div onClick={handleDeleteComment} className="cursor-pointer">
-            <FaX className="text-color-light-accent" />
+        <div
+            onClick={handleDeleteComment}
+            className="flex h-full cursor-pointer items-center justify-center px-4 text-color-light-accent transition-colors hover:bg-color-light-accent hover:text-color-white"
+        >
+            {loading ? (
+                <div className="button-loader" />
+            ) : (
+                <MdDelete className="text-xl sm:text-2xl" />
+            )}
         </div>
     )
 }

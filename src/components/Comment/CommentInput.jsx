@@ -52,8 +52,8 @@ const CommentInput = ({
         const createComment = await response.json()
 
         if (createComment.isCreated) {
-            setComment('')
             router.refresh()
+            setComment('')
         }
 
         setLoading(false)

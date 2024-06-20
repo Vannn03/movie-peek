@@ -19,7 +19,7 @@ const LoopCarousel = ({ baseImgUrl, results }) => {
                     // when window width is >= 640px
                     0: {
                         slidesPerView: 2,
-                        spaceBetween: 20,
+                        spaceBetween: 15,
                     },
                     // when window width is >= 768px
                     768: {

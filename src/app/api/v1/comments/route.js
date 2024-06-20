@@ -23,11 +23,10 @@ export async function POST(request) {
 export async function DELETE(request) {
     const { commentId, userEmail } = await request.json()
 
-    const deleteCollection = await prisma.comment.delete({
+    const deleteComment = await prisma.comment.delete({
         where: { userEmail: userEmail, id: commentId },
     })
 
-    if (!deleteCollection)
-        return Response.json({ status: 500, isDeleted: false })
+    if (!deleteComment) return Response.json({ status: 500, isDeleted: false })
     else return Response.json({ status: 200, isDeleted: true })
 }

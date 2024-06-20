@@ -10,7 +10,7 @@ const Page = async () => {
     })
 
     return (
-        <div className="h-dvh bg-color-primary p-6">
+        <div className="min-h-dvh bg-color-primary p-6">
             <h1
                 className={`${oswald.className} text-2xl font-semibold sm:text-4xl`}
             >
@@ -21,24 +21,24 @@ const Page = async () => {
                     <p>No comments to display.</p>
                 </div>
             ) : (
-                <div className="mt-6 grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+                <div className="mx-auto mt-6 grid grid-cols-1 gap-4 sm:gap-6 xl:w-[1000px]">
                     {commentDB.map((data) => (
                         <div
-                            className="flex flex-col gap-2 bg-color-secondary p-4"
+                            className="flex items-center justify-between bg-color-secondary"
                             key={data.id}
                         >
-                            <div className="flex items-center justify-between">
+                            <div className="flex flex-col gap-2 py-4 pl-4">
                                 <h1 className="text-lg font-medium sm:text-xl">
                                     {data.movieTitle}
                                 </h1>
-                                <DeleteButton
-                                    userEmail={user.email}
-                                    commentId={data.id}
-                                />
+                                <p className="text-sm sm:text-base">
+                                    {data.comment}
+                                </p>
                             </div>
-                            <p className="text-sm sm:text-base">
-                                {data.comment}
-                            </p>
+                            <DeleteButton
+                                userEmail={user.email}
+                                commentId={data.id}
+                            />
                         </div>
                     ))}
                 </div>
