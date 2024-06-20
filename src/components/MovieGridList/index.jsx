@@ -13,6 +13,7 @@ const MovieGridList = ({ results }) => {
                             <Link href={`/detail/${value.id}`}>
                                 {value.poster_path !== null ? (
                                     <Image
+                                        unoptimized
                                         src={`${baseImgUrl}${value?.poster_path}`}
                                         alt="..."
                                         width={400}
