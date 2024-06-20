@@ -1,8 +1,12 @@
 import prisma from '@/libs/prisma'
 import Image from 'next/image'
-import { formatDistance, parse, parseISO } from 'date-fns'
+import { formatDistance } from 'date-fns'
+import { authUserSessionServer } from '@/libs/auth-libs'
+import MoreButton from './MoreButton'
 
 const CommentOutput = async ({ movieId }) => {
+    const user = await authUserSessionServer()
+
     const commentDB = await prisma.comment.findMany({
         where: { movieId: movieId },
     })
@@ -24,7 +28,7 @@ const CommentOutput = async ({ movieId }) => {
                           : `${commentDB.length} comments`}
                 </p>
             </div>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col-reverse gap-6">
                 {commentDB.map((data) => (
                     <div key={data.id} className="flex gap-4 sm:gap-6">
                         <Image
@@ -39,9 +43,17 @@ const CommentOutput = async ({ movieId }) => {
                                 <h1 className="text-sm font-medium text-color-white/75 sm:text-base">
                                     {data.userName}
                                 </h1>
-                                <p className="text-sm text-color-white/35 sm:text-base">
-                                    {timeDistance(data.createdAt)}
-                                </p>
+                                <div className="flex items-center justify-end gap-2">
+                                    <p className="text-sm text-color-white/35 sm:text-base">
+                                        {timeDistance(data.createdAt)}
+                                    </p>
+                                    {user?.email === data.userEmail ? (
+                                        <MoreButton
+                                            commentId={data.id}
+                                            userEmail={user.email}
+                                        />
+                                    ) : null}
+                                </div>
                             </div>
                             <p className="sm:text-lg">{data.comment}</p>
                         </div>
