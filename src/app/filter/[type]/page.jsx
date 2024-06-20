@@ -57,7 +57,7 @@ const Page = ({ params: { type } }) => {
             <Pagination
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                lastPage={500}
+                lastPage={100}
             />
         </div>
     )

@@ -38,7 +38,7 @@ const Page = ({ params: { id, type } }) => {
             <Pagination
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                lastPage={500} // The data currently support 500 pages max
+                lastPage={100}
             />
         </div>
     )
