@@ -12,7 +12,7 @@ import 'swiper/css/autoplay'
 import { Autoplay, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 
 const TrendingCarousel = ({ baseImgUrl, results }) => {
     const slicedData = results.slice(0, 10)
@@ -30,7 +30,8 @@ const TrendingCarousel = ({ baseImgUrl, results }) => {
         >
             {slicedData.map((value, index) => (
                 <SwiperSlide key={value.id} className="relative">
-                    <Image
+                    <CldImage
+                        deliveryType="fetch"
                         src={`${baseImgUrl}${value.backdrop_path}`}
                         alt="..."
                         width={1900}

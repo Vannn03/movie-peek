@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
 import { MdImageNotSupported } from 'react-icons/md'
 
@@ -12,7 +12,8 @@ const MovieGridList = ({ results }) => {
                         <div key={value.id} className="relative cursor-pointer">
                             <Link href={`/detail/${value.id}`}>
                                 {value.poster_path !== null ? (
-                                    <Image
+                                    <CldImage
+                                        deliveryType="fetch"
                                         src={`${baseImgUrl}${value?.poster_path}`}
                                         alt="..."
                                         width={400}

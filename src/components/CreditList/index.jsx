@@ -1,7 +1,7 @@
 'use client'
 
 import { oswald } from '@/app/fonts'
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 import { useState } from 'react'
 import { MdImageNotSupported } from 'react-icons/md'
 
@@ -24,7 +24,8 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                             className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4"
                         >
                             {data.profile_path !== null ? (
-                                <Image
+                                <CldImage
+                                    deliveryType="fetch"
                                     src={`${baseImgUrl}${data.profile_path}`}
                                     alt="..."
                                     width={200}

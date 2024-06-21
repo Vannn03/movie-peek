@@ -3,12 +3,12 @@ import CollectionButton from '@/components/CollectionButton/CollectionButton'
 import CommentInput from '@/components/Comment/CommentInput'
 import CommentOutput from '@/components/Comment/CommentOutput'
 import CreditList from '@/components/CreditList'
+import BackgroundDetailImage from '@/components/OptimizedImage/BackgroundDetailImage'
+import PosterDetailImage from '@/components/OptimizedImage/PosterDetailImage'
 import VideoPlayer from '@/components/VideoPlayer'
 import { getMovieResponse } from '@/libs/api-libs'
 import { authUserSessionServer } from '@/libs/auth-libs'
 import prisma from '@/libs/prisma'
-import Image from 'next/image'
-import { MdImageNotSupported } from 'react-icons/md'
 
 const Page = async ({ params: { id } }) => {
     const detail = await getMovieResponse(
@@ -66,37 +66,19 @@ const Page = async ({ params: { id } }) => {
         <main className="relative bg-color-primary">
             {/* DETAIL */}
             <div className="relative h-fit w-full sm:h-[75dvh]">
-                {detail.backdrop_path !== null ? (
-                    <Image
-                        src={`${baseImgUrl}${detail.backdrop_path}`}
-                        alt="..."
-                        width={1900}
-                        height={750}
-                        className="hidden h-full w-full object-cover sm:flex"
-                    />
-                ) : (
-                    <div className="hidden h-full w-full items-center justify-center bg-color-secondary sm:flex">
-                        <MdImageNotSupported className="size-40" />
-                    </div>
-                )}
+                <BackgroundDetailImage
+                    detail={detail}
+                    baseImgUrl={baseImgUrl}
+                />
 
                 <div className="absolute top-0 hidden h-full w-full bg-color-primary/75 sm:flex" />
 
                 <div className="flex h-full w-full flex-col items-center justify-center gap-8 px-6 pt-6 sm:absolute sm:top-0 sm:px-12 sm:pt-0 md:px-20 lg:flex-row lg:justify-start lg:gap-12">
                     {/* MAIN DETAIL */}
-                    {detail.poster_path !== null ? (
-                        <Image
-                            src={`${baseImgUrl}${detail.poster_path}`}
-                            alt="..."
-                            width={300}
-                            height={500}
-                            className="w-60 rounded-sm sm:w-40 lg:w-96"
-                        />
-                    ) : (
-                        <div className="flex h-80 w-60 items-center justify-center rounded-sm bg-color-secondary sm:h-60 sm:w-40 lg:h-[500px] lg:w-96">
-                            <MdImageNotSupported className="size-20" />
-                        </div>
-                    )}
+                    <PosterDetailImage
+                        detail={detail}
+                        baseImgUrl={baseImgUrl}
+                    />
                     <div className="flex flex-col items-center gap-6 lg:items-start lg:gap-8">
                         <h1
                             className={`${oswald.className} text-3xl font-semibold sm:text-4xl lg:text-center lg:text-5xl`}

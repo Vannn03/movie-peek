@@ -1,7 +1,6 @@
 'use client'
 
-import { getMovieResponse } from '@/libs/api-libs'
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
 import 'swiper/css'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -44,7 +43,8 @@ const LoopCarousel = ({ baseImgUrl, results }) => {
                 {slicedData.map((value) => (
                     <SwiperSlide key={value.id} className="cursor-pointer">
                         <Link href={`/detail/${value.id}`}>
-                            <Image
+                            <CldImage
+                                deliveryType="fetch"
                                 src={`${baseImgUrl}${value.poster_path}`}
                                 alt="..."
                                 width={300}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { authUserSessionClient } from '@/libs/auth-libs'
 import Link from 'next/link'
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 
 const SignButton = () => {
     const [user, setUser] = useState(null)
@@ -27,7 +27,8 @@ const SignButton = () => {
             )}
             {user && (
                 <Link href={'/users/dashboard'}>
-                    <Image
+                    <CldImage
+                        deliveryType="fetch"
                         src={user.image}
                         alt="..."
                         width={50}

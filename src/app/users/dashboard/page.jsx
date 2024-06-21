@@ -1,5 +1,5 @@
+import DashboardUserImage from '@/components/OptimizedImage/DashboardUserImage'
 import { authUserSessionServer } from '@/libs/auth-libs'
-import Image from 'next/image'
 import Link from 'next/link'
 
 const Page = async () => {
@@ -9,13 +9,7 @@ const Page = async () => {
         <div className="flex h-[92.2dvh] items-center justify-center bg-color-primary">
             <div className="flex flex-col items-center gap-12 px-6">
                 <div className="flex flex-col items-center gap-8">
-                    <Image
-                        src={user?.image}
-                        alt="..."
-                        width={200}
-                        height={200}
-                        className="w-28 rounded-full sm:w-32"
-                    />
+                    <DashboardUserImage user={user} />
                     <h1 className="text-center text-2xl font-semibold sm:text-3xl">
                         {user?.name}
                     </h1>

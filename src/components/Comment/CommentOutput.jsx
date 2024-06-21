@@ -1,8 +1,8 @@
 import prisma from '@/libs/prisma'
-import Image from 'next/image'
 import { formatDistance } from 'date-fns'
 import { authUserSessionServer } from '@/libs/auth-libs'
 import MoreButton from './MoreButton'
+import CommentUserImage from '../OptimizedImage/CommentUserImage'
 
 const CommentOutput = async ({ movieId }) => {
     const user = await authUserSessionServer()
@@ -31,13 +31,7 @@ const CommentOutput = async ({ movieId }) => {
             <div className="flex flex-col-reverse gap-6">
                 {commentDB.map((data) => (
                     <div key={data.id} className="flex gap-4 sm:gap-6">
-                        <Image
-                            src={data.userImage}
-                            alt="..."
-                            width={50}
-                            height={50}
-                            className="size-8 rounded-full"
-                        />
+                        <CommentUserImage data={data} />
                         <div className="flex w-full flex-col gap-1">
                             <div className="flex items-center justify-between">
                                 <h1 className="text-sm font-medium text-color-white/75 sm:text-base">
