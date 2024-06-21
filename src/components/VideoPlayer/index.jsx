@@ -22,7 +22,7 @@ const VideoPlayer = ({ detail }) => {
             </div>
             {trailer && (
                 <div
-                    className={`${toggleTrailer ? 'visibility-visible pointer-events-auto opacity-100 ' : 'visibility-hidden pointer-events-none opacity-0'} fixed top-0 flex h-dvh w-full items-center justify-center bg-color-primary/90 transition-all`}
+                    className={`${toggleTrailer ? 'visibility-visible pointer-events-auto opacity-100 ' : 'visibility-hidden pointer-events-none opacity-0'} fixed top-0 flex h-dvh w-full items-center justify-center bg-color-primary/95 transition-all`}
                 >
                     <YouTube
                         videoId={trailer.key}

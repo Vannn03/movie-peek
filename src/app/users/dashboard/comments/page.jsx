@@ -2,12 +2,20 @@ import { oswald } from '@/app/fonts'
 import DeleteButton from '@/components/Comment/DeleteButton'
 import { authUserSessionServer } from '@/libs/auth-libs'
 import prisma from '@/libs/prisma'
+import { formatDistance } from 'date-fns'
+import Link from 'next/link'
 
 const Page = async () => {
     const user = await authUserSessionServer()
     const commentDB = await prisma.comment.findMany({
         where: { userEmail: user.email },
     })
+
+    const timeDistance = (date) => {
+        return formatDistance(date, new Date(), {
+            addSuffix: true,
+        })
+    }
 
     return (
         <div className="min-h-dvh bg-color-primary p-6">
@@ -21,24 +29,34 @@ const Page = async () => {
                     <p>No comments to display.</p>
                 </div>
             ) : (
-                <div className="mx-auto mt-6 grid grid-cols-1 gap-4 sm:gap-6 xl:w-[1000px]">
+                <div className="mx-auto mt-6 flex flex-col-reverse gap-4 sm:gap-6 xl:w-[1000px]">
                     {commentDB.map((data) => (
                         <div
-                            className="flex items-center justify-between bg-color-secondary"
                             key={data.id}
+                            className="rounded-lg bg-color-secondary p-6 sm:p-8"
                         >
-                            <div className="flex flex-col gap-2 py-4 pl-4">
-                                <h1 className="text-lg font-medium sm:text-xl">
-                                    {data.movieTitle}
-                                </h1>
-                                <p className="text-sm sm:text-base">
-                                    {data.comment}
+                            <div className="flex justify-end border-b border-color-white/35 pb-3 sm:pb-4">
+                                <p className="text-sm text-color-white/35 sm:text-base">
+                                    {timeDistance(data.createdAt)}
                                 </p>
                             </div>
-                            <DeleteButton
-                                userEmail={user.email}
-                                commentId={data.id}
-                            />
+                            <div className="mt-3 flex flex-col items-end justify-between gap-3 sm:mt-4 sm:flex-row sm:items-center sm:gap-2">
+                                <div className="flex flex-col gap-2">
+                                    <Link
+                                        href={`/detail/${data.movieId}`}
+                                        className="font-medium hover:underline sm:text-lg"
+                                    >
+                                        {data.movieTitle}
+                                    </Link>
+                                    <p className="text-sm text-color-white/75 sm:text-base">
+                                        {data.comment}
+                                    </p>
+                                </div>
+                                <DeleteButton
+                                    userEmail={user.email}
+                                    commentId={data.id}
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>

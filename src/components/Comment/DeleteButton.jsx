@@ -34,7 +34,7 @@ const DeleteButton = ({ commentId, userEmail }) => {
     return (
         <div
             onClick={handleDeleteComment}
-            className="flex h-full cursor-pointer items-center justify-center px-4 text-color-light-accent transition-colors hover:bg-color-light-accent hover:text-color-white"
+            className="flex h-full cursor-pointer items-center justify-center rounded p-3 text-color-light-accent transition-colors hover:bg-color-light-accent hover:text-color-white sm:p-4"
         >
             {loading ? (
                 <div className="button-loader" />

@@ -1,4 +1,5 @@
 import { getMovieResponse } from '@/libs/api-libs'
+import { authUserSessionClient } from '@/libs/auth-libs'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaChevronLeft } from 'react-icons/fa6'
@@ -8,15 +9,21 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
         return pathname !== route ? 'text-color-white/75' : 'font-medium'
     }
 
+    const [user, setUser] = useState(null)
     const [data, setData] = useState([])
 
-    const fetchData = async () => {
-        const { genres } = await getMovieResponse('/genre/movie/list', '')
-        setData(genres)
-    }
-
     useEffect(() => {
-        fetchData()
+        const fetchUserAndData = async () => {
+            const [user, movieResponse] = await Promise.all([
+                authUserSessionClient(),
+                getMovieResponse('/genre/movie/list', ''),
+            ])
+
+            setUser(user)
+            setData(movieResponse.genres)
+        }
+
+        fetchUserAndData()
     }, [])
 
     return (
@@ -57,12 +64,21 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
                         ))}
                     </div>
                 </div>
-                <Link
-                    href={'/users/dashboard'}
-                    className={`border-b border-color-white/25 px-6 py-4 transition-colors hover:text-color-light-accent ${handleActiveNav('/users/dashboard')}`}
-                >
-                    My Account
-                </Link>
+                {user ? (
+                    <Link
+                        href={'/users/dashboard'}
+                        className={`border-b border-color-white/25 px-6 py-4 transition-colors hover:text-color-light-accent ${handleActiveNav('/users/dashboard')}`}
+                    >
+                        My Dashboard
+                    </Link>
+                ) : (
+                    <Link
+                        href={'api/auth/signin'}
+                        className={`border-b border-color-white/25 px-6 py-4 text-color-white/75 transition-colors hover:text-color-light-accent`}
+                    >
+                        My Dashboard
+                    </Link>
+                )}
             </nav>
         </aside>
     )

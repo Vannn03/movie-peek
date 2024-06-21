@@ -49,7 +49,7 @@ const CommentOutput = async ({ movieId }) => {
                                     ) : null}
                                 </div>
                             </div>
-                            <p className="sm:text-lg">{data.comment}</p>
+                            <p className="text-sm sm:text-lg">{data.comment}</p>
                         </div>
                     </div>
                 ))}
