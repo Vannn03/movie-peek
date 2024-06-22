@@ -59,7 +59,7 @@ const LoopCarousel = ({ baseImgUrl, results }) => {
                         </Link>
                     </SwiperSlide>
                 ))}
-                <div className="absolute right-0 top-0 z-40 h-full w-20 bg-gradient-to-r from-black/0 via-color-primary/50 to-color-primary sm:w-28" />
+                <div className="absolute right-0 top-0 z-40 h-full w-16 bg-gradient-to-r from-black/0 via-color-primary/50 to-color-primary sm:w-28" />
             </Swiper>
         </>
     )

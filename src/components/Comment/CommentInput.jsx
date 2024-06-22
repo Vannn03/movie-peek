@@ -54,9 +54,8 @@ const CommentInput = ({
         if (createComment.isCreated) {
             router.refresh()
             setComment('')
+            setLoading(false)
         }
-
-        setLoading(false)
 
         return
     }

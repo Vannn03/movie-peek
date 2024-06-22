@@ -61,8 +61,8 @@ const CollectionButton = ({
 
         if (responseData.status === 200) {
             router.refresh()
+            setLoading(false)
         }
-        setLoading(false)
     }
 
     return (
