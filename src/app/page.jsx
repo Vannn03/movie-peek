@@ -1,7 +1,9 @@
-import LoopCarousel from '@/components/Carousel/LoopCarousel'
 import TrendingCarousel from '@/components/Carousel/TrendingCarousel'
 import { oswald } from './fonts'
 import { getMovieResponse } from '@/libs/api-libs'
+import dynamic from 'next/dynamic'
+
+const LoopCarousel = dynamic(() => import('@/components/Carousel/LoopCarousel'))
 
 const Home = async () => {
     const trending = await getMovieResponse('trending/movie/week', 'page=1')
