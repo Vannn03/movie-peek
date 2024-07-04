@@ -11,7 +11,7 @@ const Page = ({ params: { keyword } }) => {
 
     const fetchData = useCallback(async () => {
         const data = await getMovieResponse(
-            '/search/movie',
+            'search/movie',
             `query=${keyword}&page=${currentPage}`
         )
         setData(data)

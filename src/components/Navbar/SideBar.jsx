@@ -16,7 +16,7 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
         const fetchUserAndData = async () => {
             const [user, movieResponse] = await Promise.all([
                 authUserSessionClient(),
-                getMovieResponse('/genre/movie/list', ''),
+                getMovieResponse('genre/movie/list', ''),
             ])
 
             setUser(user)
@@ -25,6 +25,8 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
 
         fetchUserAndData()
     }, [])
+
+    console.log(data)
 
     return (
         <aside

@@ -41,7 +41,7 @@ const MoreButton = ({ commentId, userEmail }) => {
 
             <div
                 onClick={handleDeleteComment}
-                className={`absolute right-0 cursor-pointer transition-all ${popUp ? 'visibility-visible pointer-events-auto top-6 opacity-100 sm:top-7' : 'visibility-hidden pointer-events-none top-4 opacity-0 sm:top-5 '} rounded-full  bg-color-accent px-2 py-1 transition-all hover:brightness-105`}
+                className={`absolute right-0 cursor-pointer transition-all ${popUp ? 'pointer-events-auto top-6 opacity-100 sm:top-7' : 'pointer-events-none top-4 opacity-0 sm:top-5 '} rounded-full  bg-color-accent px-2 py-1 transition-all hover:brightness-105`}
             >
                 {loading ? (
                     <div className="button-loader" />

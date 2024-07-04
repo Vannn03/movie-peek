@@ -43,7 +43,7 @@ const SortDropdown = ({ customPosition }) => {
             </div>
 
             <div
-                className={`absolute ${customPosition} w-36 rounded-sm bg-color-secondary transition-all sm:w-40 ${dropdown ? 'visibility-visible pointer-events-auto top-16 opacity-100' : 'visibility-hidden pointer-events-none top-12 opacity-0'}`}
+                className={`absolute ${customPosition} w-36 rounded-sm bg-color-secondary transition-all sm:w-40 ${dropdown ? 'pointer-events-auto top-16 opacity-100' : 'pointer-events-none top-12 opacity-0'}`}
             >
                 {options.map((data, index) => (
                     <div

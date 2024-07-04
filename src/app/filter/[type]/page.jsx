@@ -19,7 +19,7 @@ const Page = ({ params: { type } }) => {
 
     const fetchData = useCallback(async () => {
         const data = await getMovieResponse(
-            '/discover/movie',
+            'discover/movie',
             `sort_by=${orderedType()}&page=${currentPage}`
         )
         setData(data)

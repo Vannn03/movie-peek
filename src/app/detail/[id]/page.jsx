@@ -20,7 +20,7 @@ const Page = async ({ params: { id } }) => {
         `/movie/${id}`,
         'append_to_response=videos'
     )
-    const { cast, crew } = await getMovieResponse(`/movie/${id}/credits`, '')
+    const { cast, crew } = await getMovieResponse(`movie/${id}/credits`, '')
     const baseImgUrl = process.env.NEXT_PUBLIC_API_BASE_IMG_URL
 
     const user = await authUserSessionServer()

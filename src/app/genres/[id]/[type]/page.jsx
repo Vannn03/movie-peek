@@ -12,7 +12,7 @@ const Page = ({ params: { id, type } }) => {
 
     const fetchData = useCallback(async () => {
         const { results } = await getMovieResponse(
-            '/discover/movie',
+            'discover/movie',
             `with_genres=${id}&page=${currentPage}`
         )
         setData(results)
