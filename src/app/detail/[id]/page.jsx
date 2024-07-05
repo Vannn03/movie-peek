@@ -17,7 +17,7 @@ const VideoPlayer = dynamic(() => import('@/components/VideoPlayer'))
 
 const Page = async ({ params: { id } }) => {
     const detail = await getMovieResponse(
-        `/movie/${id}`,
+        `movie/${id}`,
         'append_to_response=videos'
     )
     const { cast, crew } = await getMovieResponse(`movie/${id}/credits`, '')
