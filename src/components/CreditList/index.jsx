@@ -26,7 +26,7 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                             {data.profile_path !== null ? (
                                 <CldImage
                                     deliveryType="fetch"
-                                    src={`${baseImgUrl}${data.profile_path}`}
+                                    src={`${baseImgUrl}${data?.profile_path}`}
                                     alt="..."
                                     width={200}
                                     height={200}
@@ -41,8 +41,8 @@ const CreditList = ({ baseImgUrl, credit, title }) => {
                                 <h1 className="lg:text-lg">{data.name}</h1>
                                 <p className="text-sm text-color-white/75 lg:text-base">
                                     {title == 'Casts'
-                                        ? data.character
-                                        : data.job}
+                                        ? data?.character
+                                        : data?.job}
                                 </p>
                             </div>
                         </div>

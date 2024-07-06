@@ -35,11 +35,11 @@ const Page = async ({ params: { id } }) => {
     const detailData = [
         {
             name: 'Original title',
-            description: detail.original_title,
+            description: detail?.original_title,
         },
         {
             name: 'Overview',
-            description: detail.overview,
+            description: detail?.overview,
         },
         {
             name: 'Genre',
@@ -47,19 +47,19 @@ const Page = async ({ params: { id } }) => {
         },
         {
             name: 'Release date',
-            description: detail.release_date,
+            description: detail?.release_date,
         },
         {
             name: 'Duration',
-            description: `${detail.runtime} minutes`,
+            description: `${detail?.runtime} minutes`,
         },
         {
             name: 'Rating',
-            description: `${detail.vote_average.toFixed(1)} (${detail.vote_count} reviewers)`,
+            description: `${detail?.vote_average.toFixed(1)} (${detail?.vote_count} reviewers)`,
         },
         {
             name: 'Status',
-            description: detail.status,
+            description: detail?.status,
         },
     ]
 
@@ -95,14 +95,14 @@ const Page = async ({ params: { id } }) => {
                             <h1
                                 className={`${oswald.className} text-3xl font-semibold sm:text-4xl lg:text-center lg:text-5xl`}
                             >
-                                {detail.title}
+                                {detail?.title}
                             </h1>
                             <div className="flex items-center gap-8 text-sm text-color-white/50 sm:text-base lg:text-lg">
                                 <p className="font-semibold uppercase text-color-accent">
-                                    {detail.original_language}
+                                    {detail?.original_language}
                                 </p>
                                 <p className="italic">
-                                    {handleNullContent(detail.tagline)}
+                                    {handleNullContent(detail?.tagline)}
                                 </p>
                             </div>
                             <p className="hidden text-center text-sm text-color-white/75 sm:flex sm:text-base md:text-lg lg:text-start lg:text-xl">
@@ -112,8 +112,8 @@ const Page = async ({ params: { id } }) => {
                                 movieId={id}
                                 userEmail={user?.email}
                                 collectionDB={collectionDB}
-                                movieImage={detail.poster_path}
-                                movieTitle={detail.title}
+                                movieImage={detail?.poster_path}
+                                movieTitle={detail?.title}
                                 user={user}
                             />
                         </div>
@@ -157,7 +157,7 @@ const Page = async ({ params: { id } }) => {
                         <CommentInput
                             movieId={id}
                             userEmail={user?.email}
-                            movieTitle={detail.title}
+                            movieTitle={detail?.title}
                             userImage={user?.image}
                             userName={user?.name}
                             user={user}

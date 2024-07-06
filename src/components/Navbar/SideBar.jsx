@@ -26,8 +26,6 @@ const SideBar = ({ pathname, toggleNav, setToggleNav }) => {
         fetchUserAndData()
     }, [])
 
-    console.log(data)
-
     return (
         <aside
             className={`${toggleNav ? 'left-0' : '-left-80'} fixed top-0 z-50 flex h-full w-72 flex-col gap-4 bg-color-secondary py-6 transition-all`}
