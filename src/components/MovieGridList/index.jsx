@@ -9,7 +9,10 @@ const MovieGridList = ({ results }) => {
             {results?.length != 0 ? (
                 <div className="mt-6 grid w-full grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                     {results?.map((value) => (
-                        <div key={value.id} className="relative cursor-pointer">
+                        <div
+                            key={value.id}
+                            className="group relative cursor-pointer"
+                        >
                             <Link href={`/detail/${value.id}`}>
                                 {value.poster_path !== null ? (
                                     <CldImage
@@ -26,22 +29,26 @@ const MovieGridList = ({ results }) => {
                                     </div>
                                 )}
 
-                                <div className="absolute top-0 h-full w-full bg-gradient-to-tl from-black/0 via-black/0 to-black/75" />
+                                <div className="absolute top-0 h-full w-full transition-all group-hover:backdrop-blur-lg" />
 
-                                <div
-                                    className={`absolute left-2 top-2 rounded-full border-2 px-3 py-1 sm:left-4 sm:top-4 sm:px-4 ${value.vote_average > 8 ? 'border-green-500' : value.vote_average > 6.5 ? 'border-yellow-500' : value.vote_average == 0 ? 'border-gray-500' : 'border-red-500'}`}
-                                >
-                                    <p className="text-sm font-semibold sm:text-base">
-                                        {value.vote_average?.toFixed(1)}
+                                <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-8 opacity-0 transition-opacity group-hover:opacity-100">
+                                    <div
+                                        className={`rounded-full border-4 p-3 ${value.vote_average > 8 ? 'border-green-500' : value.vote_average > 6.5 ? 'border-yellow-500' : value.vote_average == 0 ? 'border-gray-500' : 'border-red-500'}`}
+                                    >
+                                        <p className="text-sm font-semibold sm:text-lg">
+                                            {value.vote_average?.toFixed(1)}
+                                        </p>
+                                    </div>
+
+                                    <p className="text-sm sm:text-lg">
+                                        Click to view details
                                     </p>
                                 </div>
 
                                 <div className="absolute top-0 h-full w-full bg-gradient-to-b from-black/0 via-black/0 to-black/75" />
 
-                                <h1 className="absolute bottom-0 p-2 text-sm font-medium sm:p-4 sm:text-base lg:text-lg">
-                                    {value.title.length > 24
-                                        ? `${value.title.slice(0, 24)}...`
-                                        : value.title}
+                                <h1 className="absolute bottom-0 w-full overflow-x-hidden text-ellipsis text-nowrap p-2 text-sm font-medium sm:p-4 sm:text-base lg:text-lg">
+                                    {value.title}
                                 </h1>
                             </Link>
                         </div>

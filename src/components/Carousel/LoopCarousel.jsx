@@ -51,10 +51,8 @@ const LoopCarousel = ({ baseImgUrl, results }) => {
                                 height={500}
                                 className="w-fit"
                             />
-                            <h1 className="mt-3 text-sm font-medium sm:text-base lg:text-lg">
-                                {value.title.length > 24
-                                    ? `${value.title.slice(0, 24)}...`
-                                    : value.title}
+                            <h1 className="mt-3 w-full overflow-x-hidden text-ellipsis text-nowrap text-sm font-medium sm:text-base lg:text-lg">
+                                {value.title}
                             </h1>
                         </Link>
                     </SwiperSlide>
