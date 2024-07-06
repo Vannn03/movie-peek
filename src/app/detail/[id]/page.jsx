@@ -123,7 +123,7 @@ const Page = async ({ params: { id } }) => {
                 <div className="mx-auto flex w-full flex-col gap-6 p-6 sm:gap-8 sm:p-12 xl:w-[1200px]">
                     <div className="grid grid-cols-1 gap-6 sm:gap-8">
                         <div className="flex h-fit flex-col gap-4 rounded bg-color-secondary p-6 sm:p-8">
-                            {detailData.map((data, index) => (
+                            {detailData?.map((data, index) => (
                                 <div
                                     key={index}
                                     className="border-b border-color-white/25 pb-4 last-of-type:border-b-0"
